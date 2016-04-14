@@ -1,0 +1,15 @@
+store_homepage:
+    path:     /
+    defaults: { _controller: StoreBundle:Default:index }
+
+store_login:
+    path: /login
+    defaults: { _controller: StoreBundle:Default:login }
+
+store_wishlist:
+    path: /wishlist
+    defaults: { _controller: StoreBundle:Default:wishlist }
+
+store_changelang:
+    path: /changelang
+    defaults: { _controller: StoreBundle:Default:changelang}
