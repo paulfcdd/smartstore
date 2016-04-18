@@ -1,15 +1,17 @@
 store_homepage:
-    path:     /
-    defaults: { _controller: StoreBundle:Default:index }
+    path:     /{lang}
+    defaults: { _controller: StoreBundle:Default:index, lang: en}
+    requirements:
+            lang: en|pl|ru
 
 store_login:
     path: /login
-    defaults: { _controller: StoreBundle:Default:login }
+    defaults: { _controller: StoreBundle:Security:login }
 
-store_wishlist:
-    path: /wishlist
-    defaults: { _controller: StoreBundle:Default:wishlist }
+store_admin:
+    path: /admin
+    defaults: { _controller: StoreBundle:Admin:index }
 
-store_changelang:
-    path: /changelang
-    defaults: { _controller: StoreBundle:Default:changelang}
+user_registration:
+    path:     /register
+    defaults: { _controller: StoreBundle:Registration:register }

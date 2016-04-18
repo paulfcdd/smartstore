@@ -8,13 +8,13 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
-body .navbar .container {
-  width: 100% !important;
+body .navbar {
+  margin-bottom: 0;
 }
-body .navbar .top {
-  background-color: #008acc !important;
+body .navbar .top-header-info {
+  background-color: #008acc;
 }
-body .navbar .top .btn-primary {
+body .navbar .top-header-info .btn-primary {
   color: #fff;
   background-color: transparent;
   border-color: #2e6da4;
@@ -22,7 +22,7 @@ body .navbar .top .btn-primary {
   border: none !important;
   box-shadow: none;
 }
-body .navbar .top .btn {
+body .navbar .top-header-info .btn {
   display: inline-block;
   padding: 6px 0;
   margin-bottom: 0;
@@ -46,38 +46,38 @@ body .navbar .top .btn {
   box-shadow: none;
   letter-spacing: .1em;
 }
-body .navbar .top .btn:focus {
+body .navbar .top-header-info .btn:focus {
   outline: none;
   background: transparent;
 }
-body .navbar .top .btn:active {
+body .navbar .top-header-info .btn:active {
   outline: none;
   background: transparent;
   box-shadow: none;
 }
-body .navbar .top .btn:active:focus {
+body .navbar .top-header-info .btn:active:focus {
   outline: none;
 }
-body .navbar .top .dropdown-btn {
+body .navbar .top-header-info .dropdown-btn {
   border: none;
   color: #FFF;
   background-color: transparent;
   text-transform: uppercase;
 }
-body .navbar .top .open > .dropdown-toggle.btn-default:focus,
-body .navbar .top .open > .dropdown-toggle.btn-default:hover {
+body .navbar .top-header-info .open > .dropdown-toggle.btn-default:focus,
+body .navbar .top-header-info .open > .dropdown-toggle.btn-default:hover {
   color: #ffffff;
   background-color: transparent;
   border-color: transparent;
 }
-body .navbar .top .dropdown:hover .dropdown-menu {
+body .navbar .top-header-info .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
 }
-body .navbar .middle {
+body .navbar .middle-header-info {
   background-color: #0083c1;
 }
-body .navbar .middle .form-control {
+body .navbar .middle-header-info .form-control {
   display: block;
   width: 100%;
   height: 44px;
@@ -96,102 +96,106 @@ body .navbar .middle .form-control {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-body .navbar .middle .btn-primary {
+body .navbar .middle-header-info .btn-primary {
   color: #fff;
   background-color: #006393;
   padding: 11px 0;
   border: 1px solid #006393;
   box-shadow: none;
 }
-body .navbar .middle .search-btn {
+body .navbar .middle-header-info .search-btn {
   padding-right: 15px;
   padding-left: 15px;
   border-top-right-radius: 15px !important;
   border-bottom-right-radius: 15px !important;
 }
-body .navbar .middle .category-btn {
+body .navbar .middle-header-info .category-btn {
   border-radius: 0 !important;
 }
-body .navbar .middle .shopping-cart {
+body .navbar .middle-header-info .shopping-cart {
   background-color: transparent !important;
   border: none;
 }
-body .navbar .middle .shopping-cart:focus {
+body .navbar .middle-header-info .shopping-cart:focus {
   outline: none;
   background-color: transparent !important;
 }
-body .navbar .middle .shopping-cart:active {
+body .navbar .middle-header-info .shopping-cart:active {
   outline: none;
   background-color: transparent !important;
   box-shadow: none;
 }
-body .navbar .middle .shopping-cart:active:focus {
+body .navbar .middle-header-info .shopping-cart:active:focus {
   outline: none;
   background-color: transparent !important;
 }
-body .navbar .middle .shopping-cart:hover {
+body .navbar .middle-header-info .shopping-cart:hover {
   text-decoration: underline;
 }
-body .navbar .middle .icon-button {
+body .navbar .middle-header-info .icon-button {
   background-color: transparent !important;
   border: none;
 }
-body .navbar .middle .icon-button:focus {
+body .navbar .middle-header-info .icon-button:focus {
   outline: none;
   background-color: transparent !important;
 }
-body .navbar .middle .icon-button:active {
+body .navbar .middle-header-info .icon-button:active {
   outline: none;
   background-color: transparent !important;
   box-shadow: none;
 }
-body .navbar .middle .icon-button:active:focus {
+body .navbar .middle-header-info .icon-button:active:focus {
   outline: none;
   background-color: transparent !important;
 }
-body .navbar .middle .icon-button:hover {
+body .navbar .middle-header-info .icon-button:hover {
   text-decoration: underline;
 }
-body .navbar .middle .contact-button {
+body .navbar .middle-header-info .contact-button {
   background-color: transparent !important;
   border: none;
 }
-body .navbar .middle .contact-button:focus {
+body .navbar .middle-header-info .contact-button:focus {
   outline: none;
   background-color: transparent !important;
 }
-body .navbar .middle .contact-button:active {
+body .navbar .middle-header-info .contact-button:active {
   outline: none;
   background-color: transparent !important;
   box-shadow: none;
 }
-body .navbar .middle .contact-button:active:focus {
+body .navbar .middle-header-info .contact-button:active:focus {
   outline: none;
   background-color: transparent !important;
 }
-body .navbar .middle .contact-button:hover {
+body .navbar .middle-header-info .contact-button:hover {
   text-decoration: underline;
 }
-body .navbar .middle .open > .dropdown-toggle.btn-primary:focus,
-body .navbar .middle .open > .dropdown-toggle.btn-primary:hover {
+body .navbar .middle-header-info .open > .dropdown-toggle.btn-primary:focus,
+body .navbar .middle-header-info .open > .dropdown-toggle.btn-primary:hover {
   color: #fff;
   background-color: #006393;
   border-color: transparent;
 }
-body .navbar .middle .btn:focus {
+body .navbar .middle-header-info .btn:focus {
   outline: none;
   background-color: #006393;
 }
-body .navbar .middle .btn:active {
+body .navbar .middle-header-info .btn:active {
   outline: none;
   background-color: #006393;
   box-shadow: none;
 }
-body .navbar .middle .btn:active:focus {
+body .navbar .middle-header-info .btn:active:focus {
   outline: none;
 }
-body .navbar #navbar {
-  width: 100% !important;
+body .navbar .navbar-header {
+  background-color: #006fa4;
+}
+body .container {
+  padding: 0;
+  width: 100%;
 }
 .footer {
   position: absolute;
@@ -218,224 +222,207 @@ code {
   font-size: 80%;
 }
 @media only screen and (max-width: 767px) {
-  .navbar .container {
-    border: none;
-    width: 100% !important;
-    padding: 0 !important;
-  }
-  .navbar .top {
+  .navbar .top-header-info {
     padding: 5px 0;
   }
-  .navbar .top .currency-block {
+  .navbar .top-header-info .currency-block {
     padding-left: 25px;
     text-align: center;
   }
-  .navbar .top .lang-block {
+  .navbar .top-header-info .lang-block {
     text-align: left;
     padding-left: 10px;
   }
-  .navbar .top .compare-block {
+  .navbar .top-header-info .compare-block {
     text-align: right;
     padding-left: 25px;
   }
-  .navbar .top .compare-block .btn-primary:hover {
+  .navbar .top-header-info .compare-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .blog-block {
+  .navbar .top-header-info .blog-block {
     padding-left: 2px;
     text-align: center;
   }
-  .navbar .top .blog-block .btn-primary:hover {
+  .navbar .top-header-info .blog-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .wishlist-block {
+  .navbar .top-header-info .wishlist-block {
     padding-left: 9px;
     text-align: center;
   }
-  .navbar .top .wishlist-block .btn-primary:hover {
+  .navbar .top-header-info .wishlist-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .login-block {
+  .navbar .top-header-info .login-block {
     text-align: center;
   }
-  .navbar .top .login-block .btn-primary:hover {
+  .navbar .top-header-info .login-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .middle {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
+  .navbar .middle-header-info {
+    padding: 30px 0;
   }
-  .navbar .middle .logo-container {
+  .navbar .middle-header-info .logo-container {
     text-align: left;
     padding-left: 25px;
   }
-  .navbar .middle .sm-xs-col {
+  .navbar .middle-header-info .sm-xs-col {
     text-align: right;
     padding-right: 0;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
-  .navbar .container {
-    border: none;
-    width: 100% !important;
-    padding: 0 !important;
-  }
-  .navbar .top {
+  .navbar .top-header-info {
     padding: 5px 0;
   }
-  .navbar .top .currency-block {
+  .navbar .top-header-info .currency-block {
     text-align: right;
     padding-right: 0;
   }
-  .navbar .top .lang-block {
+  .navbar .top-header-info .lang-block {
     text-align: right;
     padding-right: 0;
   }
-  .navbar .top .compare-block {
+  .navbar .top-header-info .compare-block {
     text-align: right;
     padding-right: 0;
   }
-  .navbar .top .compare-block .btn-primary:hover {
+  .navbar .top-header-info .compare-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .blog-block {
+  .navbar .top-header-info .blog-block {
     text-align: right;
     padding-right: 0;
   }
-  .navbar .top .blog-block .btn-primary:hover {
+  .navbar .top-header-info .blog-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .wishlist-block {
+  .navbar .top-header-info .wishlist-block {
     text-align: right;
     padding-right: 0;
   }
-  .navbar .top .wishlist-block .btn-primary:hover {
+  .navbar .top-header-info .wishlist-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .login-block {
+  .navbar .top-header-info .login-block {
     text-align: right;
     padding-right: 0;
   }
-  .navbar .top .login-block .btn-primary:hover {
+  .navbar .top-header-info .login-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .middle {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
+  .navbar .middle-header-info {
+    padding: 30px 0;
+    padding-right: 10px !important;
   }
-  .navbar .middle .logo-container {
+  .navbar .middle-header-info .logo-container {
     text-align: left;
     padding-left: 30px;
   }
-  .navbar .middle .sm-xs-col {
+  .navbar .middle-header-info .sm-xs-col {
     text-align: left;
     padding-left: 0 !important;
   }
 }
 @media only screen and (min-width: 993px) and (max-width: 1199px) {
-  .navbar .container {
-    border: none;
-    width: 100% !important;
-    padding: 0;
+  .navbar .top-header-info {
+    padding: 5px 40px;
   }
-  .navbar .top .currency-block {
-    text-align: center !important;
+  .navbar .top-header-info .currency-block {
+    text-align: right;
     padding-right: 0;
   }
-  .navbar .top .lang-block {
-    text-align: left !important;
+  .navbar .top-header-info .lang-block {
+    text-align: center;
   }
-  .navbar .top .compare-block {
-    text-align: center !important;
-  }
-  .navbar .top .compare-block .btn-primary:hover {
-    text-decoration: underline;
-  }
-  .navbar .top .blog-block {
+  .navbar .top-header-info .compare-block {
     text-align: left;
   }
-  .navbar .top .blog-block .btn-primary:hover {
+  .navbar .top-header-info .compare-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .wishlist-block {
-    text-align: right;
+  .navbar .top-header-info .blog-block {
+    text-align: left;
   }
-  .navbar .top .wishlist-block .btn-primary:hover {
+  .navbar .top-header-info .blog-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .login-block {
+  .navbar .top-header-info .wishlist-block {
     text-align: right;
   }
-  .navbar .top .login-block .btn-primary:hover {
+  .navbar .top-header-info .wishlist-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .middle {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
-  }
-  .navbar .middle .logo-container {
-    text-align: center;
-    padding-left: 0;
-  }
-  .navbar .middle .search-block {
+  .navbar .top-header-info .login-block {
     text-align: right;
   }
-  .navbar .middle .contact-block {
+  .navbar .top-header-info .login-block .btn-primary:hover {
+    text-decoration: underline;
+  }
+  .navbar .middle-header-info {
+    padding: 30px 40px;
+  }
+  .navbar .middle-header-info .logo-container {
+    text-align: left;
+    padding-left: 50px;
+  }
+  .navbar .middle-header-info .search-block {
     text-align: right;
   }
-  .navbar .middle .cart-block {
+  .navbar .middle-header-info .contact-block {
+    text-align: right;
+  }
+  .navbar .middle-header-info .cart-block {
     text-align: left;
     padding-left: 0;
   }
 }
 @media only screen and (min-width: 1200px) {
-  .navbar .container {
-    border: none;
-    width: 100% !important;
-    padding: 0 20% !important;
+  .navbar .top-header-info {
+    padding: 0 100px;
   }
-  .navbar .top .currency-block {
+  .navbar .top-header-info .currency-block {
     text-align: right;
   }
-  .navbar .top .lang-block {
+  .navbar .top-header-info .lang-block {
     text-align: center;
   }
-  .navbar .top .compare-block {
+  .navbar .top-header-info .compare-block {
     text-align: left;
   }
-  .navbar .top .compare-block .btn-primary:hover {
+  .navbar .top-header-info .compare-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .blog-block {
+  .navbar .top-header-info .blog-block {
     text-align: left;
   }
-  .navbar .top .blog-block .btn-primary:hover {
+  .navbar .top-header-info .blog-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .wishlist-block {
+  .navbar .top-header-info .wishlist-block {
     text-align: center;
   }
-  .navbar .top .wishlist-block .btn-primary:hover {
+  .navbar .top-header-info .wishlist-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .top .login-block {
+  .navbar .top-header-info .login-block {
     text-align: right;
   }
-  .navbar .top .login-block .btn-primary:hover {
+  .navbar .top-header-info .login-block .btn-primary:hover {
     text-decoration: underline;
   }
-  .navbar .middle {
-    padding-top: 30px !important;
-    padding-bottom: 30px !important;
+  .navbar .middle-header-info {
+    padding: 30px 100px;
   }
-  .navbar .middle .logo-container {
+  .navbar .middle-header-info .logo-container {
     text-align: center;
     padding-left: 30px;
   }
-  .navbar .middle .cart-block {
+  .navbar .middle-header-info .cart-block {
     text-align: center;
   }
-  .navbar .middle .contact-block {
+  .navbar .middle-header-info .contact-block {
     text-align: right;
     padding-right: 0 !important;
   }

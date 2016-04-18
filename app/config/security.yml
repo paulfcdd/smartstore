@@ -1,9 +1,19 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
+    encoders:
+        StoreBundle\Entity\User:
+            algorithm: bcrypt
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+
     providers:
+        our_db_provider:
+            entity:
+              class: StoreBundle:User
+              property: username
+                       # if you're using multiple entity managers
+                       # manager_name: customer
+
         in_memory:
             memory: ~
 
@@ -14,11 +24,14 @@ security:
             security: false
 
         main:
+            pattern: ^/
+            http_basic: ~
+            provider: our_db_provider
             anonymous: ~
-            # activate different ways to authenticate
+            form_login:
+                login_path: store_login
+                check_path: store_login
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }

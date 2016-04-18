@@ -6,5 +6,6 @@ return array(
     'blog' => 'Блог',
     'all_categories'=> 'Все категории',
     'contact_us'=> 'Контакты',
-    'cart'=> 'Корзина'
+    'cart'=> 'Корзина',
+    'stores' => 'Магазины'
 );

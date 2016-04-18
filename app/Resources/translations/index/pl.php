@@ -5,6 +5,7 @@ return array(
     'wishlist'=> 'Ulubione',
     'blog' => 'Blog',
     'all_categories'=> 'Wszystkie kategorie',
-    'contact_us'=> 'Skontaktuj się',
-    'cart'=> 'Koszyk'
+    'contact_us'=> 'Kontakt',
+    'cart'=> 'Koszyk',
+    'stores' => 'Sklepy'
 );
