@@ -32,6 +32,10 @@ security:
                 login_path: store_login
                 check_path: store_login
 
+            logout:
+                path: /logout
+                target: /
+
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }

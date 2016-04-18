@@ -15,3 +15,6 @@ store_admin:
 user_registration:
     path:     /register
     defaults: { _controller: StoreBundle:Registration:register }
+
+store_logout:
+    path: /logout
