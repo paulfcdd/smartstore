@@ -350,7 +350,7 @@ body {
   }
   .header .top-header-row {
     background-color: #008acc;
-    padding: 5px 20%;
+    padding: 5px 22%;
   }
   .header .top-header-row .col-lg-1 {
     text-align: center;
@@ -358,9 +358,13 @@ body {
   .header .top-header-row .currency {
     text-align: right;
   }
+  .header .top-header-row .login {
+    text-align: right;
+    padding-right: 0 !important;
+  }
   .header .middle-header-row {
     background-color: #0083c1;
-    padding: 2% 23% 2% 20%;
+    padding: 2% 23% 2% 22%;
   }
   .header .middle-header-row .logo {
     text-align: center;
@@ -368,5 +372,15 @@ body {
   }
   .header .middle-header-row .contact {
     padding-right: 20px;
+  }
+  .header .middle-header-row .contact {
+    text-align: left;
+    padding-left: 0;
+    padding-top: .5rem;
+  }
+  .header .middle-header-row .cart {
+    text-align: right;
+    padding-right: 0 !important;
+    padding-top: .5rem;
   }
 }
