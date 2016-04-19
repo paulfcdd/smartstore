@@ -8,10 +8,27 @@ store_login:
     path: /login
     defaults: { _controller: StoreBundle:Security:login }
 
-store_admin:
+admin_login:
     path: /admin
-    defaults: { _controller: StoreBundle:Admin:index }
+    defaults: { _controller: StoreBundle:Security:adminLogin }
+
+admin_control_panel:
+    path: /admin/cpanel
+    defaults: { _controller: StoreBundle:Admin:cpanel}
 
 user_registration:
     path:     /register
     defaults: { _controller: StoreBundle:Registration:register }
+
+admin_registration:
+    path: /regadmin
+    defaults: { _controller: StoreBundle:Registration:regAdmin }
+store_user:
+    path: /user
+    defaults: { _controller: StoreBundle:User:index }
+
+user_logout:
+    path: /logout
+
+admin_logout:
+    path: /admin/cpanel/logout

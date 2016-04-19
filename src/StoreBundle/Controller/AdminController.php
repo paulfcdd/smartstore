@@ -3,12 +3,13 @@
 namespace StoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class AdminController extends Controller {
 
-    public function indexAction() {
-        return new Response('test');
+    public function cpanelAction() {
+        var_dump($user = $this->get('security.token_storage')->getToken()->getUser());
+        die;
     }
 }

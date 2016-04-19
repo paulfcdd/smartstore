@@ -2,17 +2,22 @@
 # http://symfony.com/doc/current/book/security.html
 security:
     encoders:
-        StoreBundle\Entity\User:
+        entity_admin:
+            class: StoreBundle\Entity\Admin
             algorithm: bcrypt
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+        entity_user:
+            class: StoreBundle\Entity\User
+            algorithm: bcrypt
 
     providers:
-        our_db_provider:
+        admin_provider:
+            entity:
+               class: StoreBundle:Admin
+               property: username
+        user_provider:
             entity:
               class: StoreBundle:User
               property: username
-                       # if you're using multiple entity managers
-                       # manager_name: customer
 
         in_memory:
             memory: ~
@@ -22,16 +27,30 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        admin:
+            pattern: ^/admin
+            http_basic: ~
+            provider: admin_provider
+            anonymous: ~
+            form_login:
+                login_path: admin_login
+                check_path: admin_login
+            logout:
+                path: /admin/cpanel/logout
+                target: /admin
         main:
             pattern: ^/
             http_basic: ~
-            provider: our_db_provider
+            provider: user_provider
             anonymous: ~
             form_login:
                 login_path: store_login
                 check_path: store_login
+            logout:
+                path:   /logout
+                target: /
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: /admin/cpanel, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_USER }
