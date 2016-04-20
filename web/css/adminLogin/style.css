@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  background-color: lightgrey;
+}
+.wrapper .loginForm {
+  background-color: whitesmoke;
+  width: 50rem !important;
+  position: relative;
+  top: 25rem;
+  padding: 30px 20px;
+  -webkit-box-shadow: 1px 1px 20px 5px #616161;
+  -moz-box-shadow: 1px 1px 20px 5px #616161;
+  box-shadow: 1px 1px 20px 5px #616161;
+}

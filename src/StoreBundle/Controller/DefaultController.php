@@ -17,7 +17,7 @@ class DefaultController extends Controller
         define('__TRANSDIR__', $this->container->getParameter('kernel.root_dir') . '/Resources/translations/index/');
 
         $request->cookies->set('clientLang', $lang);
-        var_dump($this->get('security.token_storage')->getToken());
+//        var_dump($this->get('security.token_storage')->getToken());
         return $this->render('StoreBundle:Store:index.html.twig', include_once(__TRANSDIR__ . $lang . '.php'));
 
     }
