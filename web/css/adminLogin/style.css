@@ -14,10 +14,15 @@ body {
 .wrapper .loginForm {
   background-color: whitesmoke;
   width: 50rem !important;
-  position: relative;
-  top: 25rem;
   padding: 30px 20px;
   -webkit-box-shadow: 1px 1px 20px 5px #616161;
   -moz-box-shadow: 1px 1px 20px 5px #616161;
   box-shadow: 1px 1px 20px 5px #616161;
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  right: 6%;
+  transform: translateY(-60%);
+  resize: vertical;
+  overflow: auto;
 }
