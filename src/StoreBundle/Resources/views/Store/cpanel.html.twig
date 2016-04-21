@@ -1,21 +1,171 @@
-Hello {{ name }}
+<!DOCTYPE html>
+<html lang="en">
 
-<table>
-    <tr>
-        <td>name</td>
-        <td>code</td>
-        <td>default</td>
-        <td>rate</td>
-    </tr>
-    {% for currency in currencies %}
-        <tr>
-            <td>{{ currency.name }}</td>
+<head>
 
-            <td>{{ currency.code }}</td>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-            <td>{{ currency.isDefault }}</td>
+    <title>Simple Sidebar - Start Bootstrap Template</title>
 
-            <td> {{ currency.rate }}</td>
-        </tr>
-    {% endfor %}
-</table>
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/admin/cpanel.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext,cyrillic,latin-ext,greek'
+          rel='stylesheet' type='text/css'>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+    <header>
+
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="nav nav-stacked" id="accordion1">
+            <li>
+                <a href="{{ asset('/admin/cpanel/dashboard') }}">
+                    <span class="glyphicon glyphicon-dashboard"></span>&nbsp;Dashboard
+                </a>
+            <li>
+                <a data-toggle="collapse" data-parent="#accordion1" href="#firstLink">
+                    <span class="glyphicon glyphicon-cog"></span>&nbsp;System
+                </a>
+
+                <ul id="firstLink" class="collapse">
+                    <li><a href="#">SubTest1</a></li>
+                    <li>SubTest1</li>
+                    <li>SubTest1</li>
+                </ul>
+
+            </li>
+            <li>
+                <a data-toggle="collapse" data-parent="#accordion1" href="#secondLink">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;Categories</a>
+
+                <ul id="secondLink" class="collapse">
+                    <li>SubTest2</li>
+                    <li>SubTest2</li>
+                    <li>SubTest2</li>
+                    <li>SubTest2</li>
+                </ul>
+            </li>
+            <li>
+                <a data-toggle="collapse" data-parent="#accordion1" href="#secondLink">
+                    <span class="glyphicon glyphicon glyphicon-apple"></span>&nbsp;Products</a>
+
+                <ul id="secondLink" class="collapse">
+                    <li>SubTest2</li>
+                    <li>SubTest2</li>
+                    <li>SubTest2</li>
+                    <li>SubTest2</li>
+                </ul>
+            </li>
+            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Sales</a>
+            </li>
+        </ul>
+        {#<ul class="sidebar-nav">#}
+        {#<li class="sidebar-brand">#}
+        {#<a href="#">#}
+        {#Start Bootstrap#}
+        {#</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<span class="glyphicon glyphicon-dashboard"></span> <a href="#">Dashboard</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<a href="#">Shortcuts</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<a href="#">Overview</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<a href="#">Events</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<a href="#">About</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<a href="#">Services</a>#}
+        {#</li>#}
+        {#<li>#}
+        {#<a href="#">Contact</a>#}
+        {#</li>#}
+        {#</ul>#}
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Simple Sidebar</h1>
+
+                    <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller
+                        screens, and will appear non-collapsed on larger screens. When toggled using the button below,
+                        the menu will appear/disappear. On small screens, the page content will be pushed off
+                        canvas.</p>
+
+                    <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="{{ asset('js/bootstrap-formhelpers-currencies.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+</body>
+
+</html>
+
+{#Hello {{ name }}#}
+
+{#<table>#}
+    {#<tr>#}
+        {#<td>name</td>#}
+        {#<td>code</td>#}
+        {#<td>default</td>#}
+        {#<td>rate</td>#}
+    {#</tr>#}
+    {#{% for currency in currencies %}#}
+        {#<tr>#}
+            {#<td>{{ currency.name }}</td>#}
+
+            {#<td>{{ currency.code }}</td>#}
+
+            {#<td>{{ currency.isDefault }}</td>#}
+
+            {#<td> {{ currency.rate }}</td>#}
+        {#</tr>#}
+    {#{% endfor %}#}
+{#</table>#}
