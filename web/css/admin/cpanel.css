@@ -17,21 +17,6 @@
 #wrapper.toggled {
   padding-left: 250px;
 }
-#wrapper a {
-  color: #ffffff;
-}
-#wrapper a:hover {
-  background-color: #2E2E2E;
-}
-#wrapper a:active {
-  background-color: #2E2E2E;
-}
-#wrapper a:focus {
-  background-color: #2E2E2E;
-}
-#wrapper li {
-  list-style-type: none;
-}
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
@@ -45,6 +30,21 @@
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+#sidebar-wrapper a {
+  color: #ffffff;
+}
+#sidebar-wrapper a:hover {
+  background-color: #2E2E2E;
+}
+#sidebar-wrapper a:active {
+  background-color: #2E2E2E;
+}
+#sidebar-wrapper a:focus {
+  background-color: #2E2E2E;
+}
+#sidebar-wrapper li {
+  list-style-type: none;
 }
 #sidebar-wrapper .collapse {
   padding-left: 0 !important;
@@ -64,12 +64,15 @@
 }
 #sidebar-wrapper .collapse a:hover {
   background-color: #2E2E2E;
+  padding-left: 20px;
 }
 #sidebar-wrapper .collapse a:active {
   background-color: transparent;
+  padding-left: 20px;
 }
 #sidebar-wrapper .collapse a:focus {
   background-color: transparent;
+  padding-left: 20px;
 }
 #wrapper.toggled #sidebar-wrapper {
   width: 250px;
