@@ -82,6 +82,9 @@ body {
   display: block;
   margin-top: 0;
 }
+.wrapper .header .middle-header-row {
+  background-color: #0083c1;
+}
 .wrapper .header .middle-header-row .search {
   padding-top: 3px;
 }
@@ -256,7 +259,6 @@ body {
     width: 100%;
   }
   .header .top-header-row {
-    background-color: #008acc;
     padding: 0;
   }
   .header .top-header-row .col-xs-2 {
@@ -271,7 +273,6 @@ body {
     text-align: right;
   }
   .header .middle-header-row {
-    background-color: #0083c1;
     padding-top: 30px !important;
     padding-bottom: 30px !important;
     padding-right: 0;
@@ -286,15 +287,13 @@ body {
     width: 100%;
   }
   .header .top-header-row {
-    background-color: #008acc;
     padding: 5px 10px;
   }
   .header .top-header-row .col-sm-2 {
     text-align: center;
   }
   .header .middle-header-row {
-    background-color: #0083c1;
-    padding: 2% 10px;
+    padding: 2% 0;
   }
   .header .middle-header-row .logo {
     text-align: center;
@@ -312,7 +311,6 @@ body {
     width: 100%;
   }
   .header .top-header-row {
-    background-color: #008acc;
     padding: 5px 10%;
   }
   .header .top-header-row .col-lg-1 {
@@ -326,7 +324,6 @@ body {
     padding-right: 0 !important;
   }
   .header .middle-header-row {
-    background-color: #0083c1;
     padding: 2% 10%;
   }
   .header .middle-header-row .logo {
@@ -334,9 +331,7 @@ body {
     padding-left: 30px;
   }
   .header .middle-header-row .contact {
-    text-align: left;
-    padding-left: 0;
-    padding-top: .5rem;
+    text-align: center;
   }
   .header .middle-header-row .cart {
     text-align: right;
@@ -349,38 +344,37 @@ body {
     width: 100%;
   }
   .header .top-header-row {
-    background-color: #008acc;
-    padding: 5px 22%;
+    padding: 5px 20%;
   }
   .header .top-header-row .col-lg-1 {
     text-align: center;
   }
+  .header .top-header-row .blog {
+    text-align: left;
+    padding-left: 0 !important;
+  }
   .header .top-header-row .currency {
     text-align: right;
+  }
+  .header .top-header-row .wishlist {
+    text-align: center;
   }
   .header .top-header-row .login {
     text-align: right;
     padding-right: 0 !important;
   }
   .header .middle-header-row {
-    background-color: #0083c1;
-    padding: 2% 23% 2% 22%;
+    padding: 2% 20%;
   }
   .header .middle-header-row .logo {
     text-align: center;
-    padding-left: 30px;
+    padding-left: 25px;
   }
   .header .middle-header-row .contact {
-    padding-right: 20px;
-  }
-  .header .middle-header-row .contact {
-    text-align: left;
-    padding-left: 0;
-    padding-top: .5rem;
+    text-align: center;
   }
   .header .middle-header-row .cart {
     text-align: right;
     padding-right: 0 !important;
-    padding-top: .5rem;
   }
 }
