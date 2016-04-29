@@ -18,6 +18,9 @@ body {
 .wrapper .header .top-header-row {
   background-color: #008acc;
 }
+.wrapper .header .top-header-row p {
+  margin: 0 !important;
+}
 .wrapper .header .top-header-row .btn-primary {
   color: #fff;
   background-color: transparent;
@@ -345,23 +348,27 @@ body {
   }
   .header .top-header-row {
     padding: 5px 20%;
+    border: 1px solid black;
   }
   .header .top-header-row .col-lg-1 {
     text-align: center;
   }
   .header .top-header-row .blog {
-    text-align: left;
-    padding-left: 0 !important;
+    text-align: right;
+    padding-right: 0 !important;
   }
   .header .top-header-row .currency {
     text-align: right;
   }
   .header .top-header-row .wishlist {
-    text-align: center;
+    padding: 0 0 0 20px;
+    display: inline-block;
+    width: inherit;
   }
   .header .top-header-row .login {
-    text-align: right;
-    padding-right: 0 !important;
+    padding: 0 0 0 20px;
+    display: inline-block;
+    width: inherit;
   }
   .header .middle-header-row {
     padding: 2% 20%;
