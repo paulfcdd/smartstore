@@ -1,7 +1,7 @@
 <?php
 return array(
     'compare'=> 'Porównaj',
-    'login'=> 'Załoguj się',
+    'login'=> 'Logowanie',
     'wishlist'=> 'Ulubione',
     'blog' => 'Blog',
     'all_categories'=> 'Wszystkie kategorie',

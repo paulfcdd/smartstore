@@ -1,12 +1,14 @@
 store_homepage:
-    path:     /{lang}
-    defaults: { _controller: StoreBundle:Default:index, lang: en}
-    requirements:
-            lang: en|pl|ru
+    path:     /
+    defaults: { _controller: StoreBundle:Default:index }
 
 store_login:
     path: /login
     defaults: { _controller: StoreBundle:Security:login }
+
+store_changeLang:
+    path: /changelang
+    defaults: { _controller: StoreBundle:Default:changeLang}
 
 admin_login:
     path: /admin
