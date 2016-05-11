@@ -41,9 +41,5 @@ angular
 
 
     .controller('AppCtrl', function AppCtrl($scope) {
-        $scope.test = 'hello';
 
-        $scope.test = function() {
-            alert('kek');
-        }
     });

@@ -46,14 +46,14 @@
                 </a>
 
                 <ul id="firstLink" class="collapse">
-                    <li id="lang" onclick="loadTemplate(this.id)"><a href="#"><span
+                    <li id="language" onclick="loadTemplate(this.id)"><a href="#"><span
                                     class="glyphicon glyphicon-menu-right"></span>&nbsp;Languages</a></li>
-                    <li id="curr" onclick="loadTemplate(this.id)"><a href="#"><span
+                    <li id="currency" onclick="loadTemplate(this.id)"><a href="#"><span
                                     class="glyphicon glyphicon-menu-right"></span>&nbsp;Currency</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Location</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Countries</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Order status</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Stock status</a></li>
+                    <li id="location" onclick="loadTemplate(this.id)">><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Location</a></li>
+                    <li id="countries" onclick="loadTemplate(this.id)">><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Countries</a></li>
+                    <li id="order_status" onclick="loadTemplate(this.id)">><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Order status</a></li>
+                    <li id="stock_status" onclick="loadTemplate(this.id)">><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Stock status</a></li>
                 </ul>
 
             </li>
@@ -88,9 +88,12 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">
+            {% block body %}
             <div class="row" id="load">
+                {{ include('tpl/currency.html.twig', {'title': 'Currency'}) }}
             </div>
-            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+            {% endblock %}
+            {#<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>#}
         </div>
     </div>
 </div>
@@ -103,8 +106,32 @@
 <script>
 
     function loadTemplate(id) {
-        $('#load').load("{{ asset('tpl/') }}" + id + "{{ ('.html.twig') }}");
-        $('#'+id).addClass('active');
+
+        switch (id) {
+            case 'currency':
+                $('#load').text('{{ include('tpl/currency.html.twig', {'title': 'Currency'}) }}');
+                break;
+        }
+
+        {#$('#load').load("{{ include('tpl/') }}" + id + "{{ ('.html.twig') }}", function (response, status, xhr) {#}
+            {#if (status == 'error') {#}
+                {#$('#load').text('During loading ' + id + ' template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');#}
+            {#}#}
+        {#});#}
+
+        {#$('#load').load("{{ asset('tpl/') }}" + id + "{{ ('.html.twig') }}", function (response, status, xhr) {#}
+            {#if (status == 'error') {#}
+                {#$('#load').text('During loading ' + id + ' template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');#}
+            {#}#}
+        {#});#}
+
+
+
+        {#$('#load').load("{{ include('tpl/currency.html.twig', {'kek': 9}) }}", function (response, status, xhr) {#}
+            {#if (status == 'error') {#}
+                {#$('#load').text('During loading ' + id + ' template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');#}
+            {#}#}
+        {#});#}
     }
 
     $("#menu-toggle").click(function (e) {

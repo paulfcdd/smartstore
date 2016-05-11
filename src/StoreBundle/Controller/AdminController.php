@@ -16,15 +16,12 @@ class AdminController extends Controller {
 
         $currencies = $currencyRepo->findAll();
 
-//        var_dump($currencies);
-
         return $this->render('StoreBundle:Store:cpanel.html.twig', array(
             'name' => $user->getUsername(),
-            'currencies' => $currencies
+            'test' => 'This is admin console'
         ));
 //        var_dump($user = $this->get('security.token_storage')->getToken()->getUser());
 //        die;
     }
 }
-//return $this->render('ImagineNewsletterBundle:Section:'.$builder->getTemplate(), array('prevArticles' => $prevArticles));
 

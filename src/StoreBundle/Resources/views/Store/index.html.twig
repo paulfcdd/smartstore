@@ -46,9 +46,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li id="en" onclick="changeLang(this)"><a href="#" data-value="en">English</a></li>
-                        <li id="pl" onclick="changeLang(this)"><a href="#" data-value="pl">Polski</a></li>
-                        <li id="ru" onclick="changeLang(this)"><a href="#" data-value="ru">Русский</a></li>
+                        <li id="en" onclick="changeLang(this)"><a href="" data-value="en">English</a></li>
+                        <li id="pl" onclick="changeLang(this)"><a href="" data-value="pl">Polski</a></li>
+                        <li id="ru" onclick="changeLang(this)"><a href="" data-value="ru">Русский</a></li>
                     </ul>
                 </div>
             </div>
@@ -93,11 +93,13 @@
     function changeLang(element) {
         var selectedLang = element.id;
         $.ajax({
-            type: 'POST',
-            url: '{{path('store_changeLang')}}',
-            data: selectedLang,
-            success: function(data) {
-                console.log(data);
+            url: "{{ path('store_changeLang') }}",
+            type: "POST",
+            data: {
+                "selectedLang": selectedLang
+            },
+            success: function (data) {
+                location.reload();
             }
         });
     }
