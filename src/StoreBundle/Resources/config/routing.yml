@@ -34,3 +34,11 @@ user_logout:
 
 admin_logout:
     path: /admin/cpanel/logout
+
+currency:
+    path: /admin/cpanel/currency
+    defaults: { _controller: StoreBundle:Admin:settingsCurrency }
+
+edit_currency:
+    path: /admin/cpanel/edit_currency
+    defaults: { _controller: StoreBundle:Admin:editCurrency}

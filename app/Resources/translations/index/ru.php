@@ -7,5 +7,6 @@ return array(
     'all_categories'=> 'Все категории',
     'contact_us'=> 'Контакты',
     'cart'=> 'Корзина',
-    'stores' => 'Магазины'
+    'stores' => 'Магазины',
+    'js_disabled' => 'Выполнение JavaScript отключено. Включите JavaScript для корректной работы сайта'
 );

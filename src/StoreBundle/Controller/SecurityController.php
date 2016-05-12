@@ -29,6 +29,10 @@ class SecurityController extends Controller
 
     public function adminLoginAction (Request $request) {
 
+        if (is_object($this->get('security.token_storage')->getToken()->getUser())) {
+           return $this->redirectToRoute('admin_control_panel');
+        };
+
         $authenticationUtils = $this->get('security.authentication_utils');
 
         // get the login error if there is one

@@ -1,0 +1,64 @@
+<div class="currencyTpl">
+    <div class="top-block">
+        <div class="pull-left">
+            <h3>{{  title }}</h3>
+        </div>
+        <div class="pull-right">
+            <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Add currency">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <script>
+                $(document).ready(function(){
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            </script>
+        </div>
+    </div>
+
+    <table class="table currency-tbl">
+        <thead>
+        <tr>
+            <td>name</td>
+            <td>code</td>
+            <td>rate</td>
+            <td>default</td>
+            <td>actions</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for currency in currencies %}
+            <tr>
+                <td>{{ currency.name }}</td>
+
+                <td>{{ currency.code }}</td>
+
+                <td> {{ currency.rate }}</td>
+
+                <td>
+                    {% if currency.isDefault == 1 %}
+                        <p>Yes</p>
+                    {% else %}
+                        <p>No</p>
+                    {% endif %}
+                </td>
+                <td colspan="2">
+                    <button type="button" class="btn btn-primary" id="{{ currency.id }}" onclick="location.replace('{{ path('edit_currency') }}')">
+                        <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit
+                    </button>
+                    {%  if currencies | length < 2 %}
+
+                    <button type="button" class="btn btn-danger disabled">
+                        <span class="glyphicon glyphicon-remove"></span>&nbsp;Delete
+                    </button>
+
+                    {% else %}
+                        <button type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;Delete
+                        </button>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

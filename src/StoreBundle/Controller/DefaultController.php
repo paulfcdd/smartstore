@@ -38,7 +38,8 @@ class DefaultController extends Controller
         if ($clientLang->has('selectedLang')) {
             return $this->render('StoreBundle:Store:index.html.twig', include_once(__TRANSDIR__ . $clientLang->get('selectedLang') . '.php'));
         } else {
-            return $this->render('StoreBundle:Store:index.html.twig', include_once(__TRANSDIR__ . $browserLang. '.php'));
+            $clientLang->set('selectedLang', $browserLang);
+            return $this->render('StoreBundle:Store:index.html.twig', include_once(__TRANSDIR__ . $clientLang->get('selectedLang'). '.php'));
         }
     }
 

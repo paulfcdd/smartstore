@@ -7,5 +7,6 @@ return array(
     'all_categories'=> 'Wszystkie kategorie',
     'contact_us'=> 'Kontakt',
     'cart'=> 'Koszyk',
-    'stores' => 'Sklepy'
+    'stores' => 'Sklepy',
+    'js_disabled' => 'JavaScript jest wyłączony. Proszę włączyć JavaScript dla poprawnego działania strony'
 );

@@ -7,5 +7,6 @@ return array(
     'all_categories'=> 'All categories',
     'contact_us'=> 'Contacts',
     'cart'=> 'Cart',
-    'stores' => 'Stores'
+    'stores' => 'Stores',
+    'js_disabled' => 'JavaScript is disabled. Please, enable JavaScript on your browser for correct work with system'
 );
