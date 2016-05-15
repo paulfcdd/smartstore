@@ -1,6 +1,6 @@
 store_homepage:
     path:     /
-    defaults: { _controller: StoreBundle:Default:index }
+    defaults: { _controller: StoreBundle:Main:index }
 
 store_login:
     path: /login
@@ -8,7 +8,7 @@ store_login:
 
 store_changeLang:
     path: /changelang
-    defaults: { _controller: StoreBundle:Default:changeLang}
+    defaults: { _controller: StoreBundle:Main:changeLang}
 
 admin_login:
     path: /admin
@@ -39,6 +39,14 @@ currency:
     path: /admin/cpanel/currency
     defaults: { _controller: StoreBundle:Admin:settingsCurrency }
 
-edit_currency:
-    path: /admin/cpanel/edit_currency
-    defaults: { _controller: StoreBundle:Admin:editCurrency}
+add_new_currency:
+    path: /admin/cpanel/addnewcurrency
+    defaults: { _controller: StoreBundle:Admin:addNewCurrency }
+
+delete_currency:
+    path: /admin/cpanel/deletecurrency
+    defaults: { _controller: StoreBundle:Admin:deleteCurrency }
+
+update_currency:
+    path: admin/cpanel/updatecurrency
+    defaults: { _controller: StoreBundle:Admin:updateCurrency }

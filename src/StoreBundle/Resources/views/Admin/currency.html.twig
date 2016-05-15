@@ -11,7 +11,7 @@
             <div id="addCurrency" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
-                    <!-- Modal content-->
+                    <!--------- ADD CURRENCY MODAL ------------->
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -20,47 +20,39 @@
                             </h4>
                         </div>
                         <div class="modal-body">
+                            <div class="alert alert-danger fade in" id="addCurrencyError">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Error!</strong> Currency is already exist
+                            </div>
                             <form role="form">
                                 <div class="form-group">
                                     <label for="curName">Name</label>
-                                    <input type="text" class="form-control" id="curName" placeholder="Set currency name">
+                                    <input type="text" class="form-control" id="curName"
+                                           placeholder="Set currency name">
                                 </div>
                                 <div class="form-group">
                                     <label for="curCode">Code</label>
-                                    <input type="text" class="form-control" id="curCode" placeholder="Set currency ISO code">
+                                    <input type="text" class="form-control" id="curCode"
+                                           placeholder="Set currency ISO code">
                                 </div>
                                 <div class="checkbox">
                                     <label><input type="checkbox" id="isDefault">Default currency?</label>
                                 </div>
                                 <div class="form-group">
                                     <label for="curRate">Currency rate</label>
-                                    <input type="text" class="form-control" id="disabledInput" placeholder="Set currency rate">
+                                    <input type="text" class="form-control" id="curRate"
+                                           placeholder="Set currency rate">
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success">Add</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
-                                </div>
-                            </form>
-                            <script>
 
-                            </script>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" onclick="addCurrency(this.form)">Add</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <script>
-                $(document).ready(function () {
-                    $('[data-tooltip="tooltip"]').tooltip();
-                });
-
-                $('#isDefault').click(function(){
-
-                    var isChecked = $('#isDefault').prop('checked');
-                    if (isChecked == true) {
-                        document.getElementById("curRate").className = "disabled";
-                    }
-                });
-            </script>
         </div>
     </div>
 
@@ -91,28 +83,54 @@
                     {% endif %}
                 </td>
                 <td colspan="2">
-                    <button type="button" class="btn btn-primary" data-id="{{ currency.id }}" data-toggle="modal"
-                            data-target="#editCurrency">
+                    <button type="button" id="editButton" class="btn btn-primary" data-id="{{ currency.id }}"
+                            data-toggle="modal"
+                            data-target="#editCurrency"
+                            data-curName="{{ currency.name }}"
+                            data-curCode="{{ currency.code }}"
+                            data-isDefault="{{ currency.isDefault }}"
+                            data-curRate="{{ currency.rate }}"
+                            onclick="editModalBtn(this.id)">
                         <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit
                     </button>
-
                     <div id="editCurrency" class="modal fade" role="dialog">
                         <div class="modal-dialog">
 
-                            <!-- Modal content-->
+                            <!-------------EDIT CURRENCY MODAL------------->
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title">Edit currency</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Some text in the modal.</p>
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="curName">Name</label>
+                                            <input type="text" class="form-control" id="curNameEdit"
+                                                   placeholder="Set currency name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="curCode">Code</label>
+                                            <input type="text" class="form-control" id="curCodeEdit"
+                                                   placeholder="Set currency ISO code">
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="isDefaultEdit">Default currency?</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="curRate">Currency rate</label>
+                                            <input type="text" class="form-control" id="curRateEdit"
+                                                   placeholder="Set currency rate">
+                                        </div>
+
+                                    </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-success" id="{{ currency.id }}"
+                                            onclick="editCurrency(this.id)">Save</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     {% if currencies | length < 2 %}
@@ -122,7 +140,10 @@
                         </button>
 
                     {% else %}
-                        <button type="button" class="btn btn-danger">
+                        <button type="button" class="btn btn-danger" id="{{ currency.id }}"
+                                onclick="deleteCurConf(this.id)"
+                                data-curname="{{ currency.name }}"
+                                data-toggle="modal" data-target="#deleteConfirm">
                             <span class="glyphicon glyphicon-remove"></span>&nbsp;Delete
                         </button>
                     {% endif %}
@@ -131,4 +152,142 @@
         {% endfor %}
         </tbody>
     </table>
+    <!-- Delete confirmation -->
+    <div id="deleteConfirm" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        Delete confirmation
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete <b><span id="deleteCurName"></span></b> from currency list? </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success deleteBtn" id="" onclick="deleteCurrency(this.id)">
+                        Yes
+                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        function editCurrency(id) {
+            var editName = $('#curNameEdit').val();
+            var editCode = $('#curCodeEdit').val();
+            var editRate = $('#curRateEdit').val();
+            var editStat = $('#isDefaultEdit').prop('checked');
+
+            var editArray = {
+                id,
+                editName,
+                editCode,
+                editRate,
+                editStat
+            };
+
+            $.ajax({
+                url: "{{ path('update_currency') }}",
+                method: "POST",
+                data: {
+                    "updateData": editArray
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+
+        function editModalBtn(id) {
+            var name = $('#' + id).attr('data-curname');
+            var code = $('#' + id).attr('data-curcode');
+            var defcur = $('#' + id).attr('data-isdefault');
+            var rate = $('#' + id).attr('data-currate');
+
+            $('#curNameEdit').attr('value', name);
+            $('#curCodeEdit').attr('value', code);
+            $('#curRateEdit').attr('value', rate);
+            if (defcur == 1) {
+                $('#isDefaultEdit').attr('checked', true);
+            }
+        }
+        function deleteCurConf(id) {
+            var curName = $('#' + id).data('curName');
+            var deleteID = id;
+            console.log($('#' + id).attr('data-curname'));
+            $('#deleteCurName').text(curName);
+            $('.deleteBtn').attr('id', deleteID);
+        }
+
+        function deleteCurrency(id) {
+            $.ajax({
+                url: "{{ path('delete_currency') }}",
+                method: "POST",
+                data: {
+                    "id": id
+                },
+                success: function (data) {
+                    if (data === 'true') {
+                        location.reload();
+                    } else {
+                        alert('During operation an error was ocured');
+                    }
+                }
+            })
+        }
+
+        $('#addCurrencyError').attr('hidden', true);
+
+        $(document).ready(function () {
+            $('[data-tooltip="tooltip"]').tooltip();
+        });
+
+        $('#isDefault').click(function () {
+
+            var isChecked = $('#isDefault').prop('checked');
+            if (isChecked == true) {
+                $('#curRate').prop('disabled', true);
+                $('#curRate').val('1');
+            } else {
+                $('#curRate').prop('disabled', false);
+                $('#curRate').val('');
+            }
+        });
+
+        function addCurrency(form) {
+
+            var curName = $('#curName').val();
+            var curCode = $('#curCode').val();
+            var isDefault = $('#isDefault').prop('checked');
+            var curRate = $('#curRate').val();
+            var data = {
+                curName,
+                curCode,
+                isDefault,
+                curRate
+            };
+            $.ajax({
+                type: "POST",
+                url: "{{ path('add_new_currency') }}",
+                data: {
+                    "newCurrency": data
+                },
+                success: function (data) {
+                    console.log(data);
+                    if (data === 'false') {
+                        $('#addCurrencyError').attr('hidden', false);
+                    } else {
+                        location.reload();
+                    }
+                }
+            });
+        }
+    </script>
 </div>

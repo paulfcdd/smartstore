@@ -13,7 +13,7 @@
 <div class="wrapper">
     <noscript>
         <div class="alert alert-warning">
-            <strong>Notice!&nbsp;</strong>{{ js_disabled }}
+            <strong>{{ notice_js_disabled }}&nbsp;</strong>{{ js_disabled }}
         </div>
     </noscript>
     <div class="header container-fluid">
@@ -64,9 +64,7 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="currency">
-                        <li class="default_cur"><a href="#" data-value="eur">EUR</a></li>
-                        <li><a href="#" data-value="usd">USD</a></li>
-                        <li><a href="#" data-value="gbp">GBP</a></li>
+                        {{ render (controller('StoreBundle:Main:getCurrencyList')) }}
                     </ul>
                 </div>
             </div>

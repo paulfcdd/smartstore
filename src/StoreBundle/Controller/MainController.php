@@ -9,10 +9,9 @@ use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
-class DefaultController extends Controller
-{
+class MainController extends Controller {
 
-//    CHANGIG SYSTEM LANGUAGE ACTION
+    //    CHANGIG SYSTEM LANGUAGE ACTION
     public function changeLangAction(Request $request) {
         $data = $request->get('selectedLang');
         $clientLang = new Session();
@@ -50,7 +49,11 @@ class DefaultController extends Controller
 
         $currencies = $currencyRepo->findAll();
 
-        return $currencies;
+        $test = 'test';
+        return $this->render(
+            'StoreBundle:Store:currencyList.html.twig',
+            array('currencies' => $currencies)
+        );
     }
 
 }

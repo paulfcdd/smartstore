@@ -1,0 +1,7 @@
+{% for currency in currencies %}
+    {% if currency.isDefault == 1 %}
+        <li class="default_cur"><a href="#" data-value="{{ currency.code }}">{{ currency.code }}</a></li>
+    {% else %}
+        <li><a href="#" data-value="{{ currency.code }}">{{ currency.code }}</a></li>
+    {% endif %}
+{% endfor %}
