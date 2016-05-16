@@ -47,6 +47,8 @@
                                     class="glyphicon glyphicon-menu-right"></span>&nbsp;Currency</a></li>
                     <li id="locale" onclick="loadTemplate(this.id)"><a href="#"><span
                                     class="glyphicon glyphicon-menu-right"></span>&nbsp;Locale</a></li>
+                    <li id="locale" onclick="loadTemplate(this.id)"><a href="#"><span
+                                    class="glyphicon glyphicon-menu-right"></span>&nbsp;Test</a></li>
                    </ul>
 
             </li>
@@ -113,9 +115,9 @@
         switch (id) {
             case 'currency':
                     window.location.hash = id;
-                $('#load').load("{{ path('currency') }}", function (response, status, xhr) {
+                    $('#load').load("{{ path('currency') }}", function (response, status, xhr) {
                     if (status == 'error') {
-                        $('#load').text('During loading ' + id + ' template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+                        $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
                     }
                 });
                 break;
@@ -130,7 +132,7 @@
     if (window.location.hash == '#currency') {
         $('#load').load("{{ path('currency') }}", function (response, status, xhr) {
             if (status == 'error') {
-                $('#load').text('During loading ' + id + ' template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+                $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
             }
         });
     }

@@ -59,6 +59,7 @@
     <table class="table currency-tbl">
         <thead>
         <tr>
+            <td>id</td>
             <td>name</td>
             <td>code</td>
             <td>rate</td>
@@ -69,6 +70,7 @@
         <tbody>
         {% for currency in currencies %}
             <tr>
+                <td>{{ currency.id }}</td>
                 <td>{{ currency.name }}</td>
 
                 <td>{{ currency.code }}</td>
@@ -83,14 +85,15 @@
                     {% endif %}
                 </td>
                 <td colspan="2">
-                    <button type="button" id="editButton" class="btn btn-primary" data-id="{{ currency.id }}"
+                    <button type="button" class="btn btn-primary"
+                            id="{{ currency.id }}"
                             data-toggle="modal"
                             data-target="#editCurrency"
-                            data-curName="{{ currency.name }}"
-                            data-curCode="{{ currency.code }}"
-                            data-isDefault="{{ currency.isDefault }}"
-                            data-curRate="{{ currency.rate }}"
-                            onclick="editModalBtn(this.id)">
+                            data-curname="{{ currency.name }}"
+                            data-curcode="{{ currency.code }}"
+                            data-isdefault="{{ currency.isDefault }}"
+                            data-currate="{{ currency.rate }}"
+                            onclick="editModalBtn(this)">
                         <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit
                     </button>
                     <div id="editCurrency" class="modal fade" role="dialog">
@@ -127,7 +130,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-success" id="{{ currency.id }}"
-                                            onclick="editCurrency(this.id)">Save</button>
+                                            onclick="editCurrency(this)">Save
+                                    </button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
                                 </div>
                             </div>
@@ -140,72 +144,83 @@
                         </button>
 
                     {% else %}
-                        <button type="button" class="btn btn-danger" id="{{ currency.id }}"
-                                onclick="deleteCurConf(this.id)"
+                        <button type="button" class="btn btn-danger"
+                                id="{{ currency.id }}"
                                 data-curname="{{ currency.name }}"
-                                data-toggle="modal" data-target="#deleteConfirm">
+                                data-toggle="modal"
+                                data-target="#deleteConfirm"
+                                onclick="deleteCurConf(this)">
                             <span class="glyphicon glyphicon-remove"></span>&nbsp;Delete
                         </button>
+
+
+                        <!-- Delete confirmation -->
+                        <div id="deleteConfirm" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">
+                                            Delete confirmation
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Are you sure you want to delete <b><span id="deleteCurName"></span></b> from currency list? </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success deleteBtn" id="" onclick="deleteCurrency(this.id)">
+                                            Yes
+                                        </button>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     {% endif %}
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <!-- Delete confirmation -->
-    <div id="deleteConfirm" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">
-                        Delete confirmation
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete <b><span id="deleteCurName"></span></b> from currency list? </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success deleteBtn" id="" onclick="deleteCurrency(this.id)">
-                        Yes
-                    </button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <script>
 
-        function editCurrency(id) {
-            var editName = $('#curNameEdit').val();
-            var editCode = $('#curCodeEdit').val();
-            var editRate = $('#curRateEdit').val();
-            var editStat = $('#isDefaultEdit').prop('checked');
+        function editCurrency(btn) {
+            console.log();
+            {#var editName = $('#curNameEdit').val();#}
+            {#var editCode = $('#curCodeEdit').val();#}
+            {#var editRate = $('#curRateEdit').val();#}
+            {#var editStat = $('#isDefaultEdit').prop('checked');#}
 
-            var editArray = {
-                id,
-                editName,
-                editCode,
-                editRate,
-                editStat
-            };
+            {#var editArray = {#}
+                {#id,#}
+                {#editName,#}
+                {#editCode,#}
+                {#editRate,#}
+                {#editStat#}
+            {#};#}
 
-            $.ajax({
-                url: "{{ path('update_currency') }}",
-                method: "POST",
-                data: {
-                    "updateData": editArray
-                },
-                success: function (data) {
-                    console.log(data);
-                }
-            });
+            {#$.ajax({#}
+                {#url: "{{ path('update_currency') }}",#}
+                {#method: "POST",#}
+                {#data: {#}
+                    {#"updateData": editArray#}
+                {#},#}
+                {#success: function (data) {#}
+                    {#if (data === 'true') {#}
+                        {#location.reload();#}
+                    {#} else {#}
+                        {#alert('During operation an error was ocured');#}
+                    {#}#}
+                {#}#}
+            {#});#}
         }
 
-        function editModalBtn(id) {
+        function editModalBtn(btn) {
+            console.log(btn.id);
+            var id = btn.id;
             var name = $('#' + id).attr('data-curname');
             var code = $('#' + id).attr('data-curcode');
             var defcur = $('#' + id).attr('data-isdefault');
@@ -217,16 +232,20 @@
             if (defcur == 1) {
                 $('#isDefaultEdit').attr('checked', true);
             }
+
+            return id;
         }
-        function deleteCurConf(id) {
-            var curName = $('#' + id).data('curName');
-            var deleteID = id;
-            console.log($('#' + id).attr('data-curname'));
+
+        function deleteCurConf(btn) {
+            var curName = $(btn).data('curname');
+            console.log(curName);
+
             $('#deleteCurName').text(curName);
-            $('.deleteBtn').attr('id', deleteID);
+            $('.deleteBtn').attr('id', btn.id);
         }
 
         function deleteCurrency(id) {
+            console.log(id);
             $.ajax({
                 url: "{{ path('delete_currency') }}",
                 method: "POST",

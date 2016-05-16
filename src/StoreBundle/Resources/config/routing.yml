@@ -8,7 +8,11 @@ store_login:
 
 store_changeLang:
     path: /changelang
-    defaults: { _controller: StoreBundle:Main:changeLang}
+    defaults: { _controller: StoreBundle:Main:changeLang }
+
+store_stores_loc:
+    path: /stores
+    defaults: { _controller: StoreBundle:Stores:stores }
 
 admin_login:
     path: /admin

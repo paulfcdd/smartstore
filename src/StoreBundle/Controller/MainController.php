@@ -9,10 +9,12 @@ use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
-class MainController extends Controller {
+class MainController extends Controller
+{
 
     //    CHANGIG SYSTEM LANGUAGE ACTION
-    public function changeLangAction(Request $request) {
+    public function changeLangAction(Request $request)
+    {
         $data = $request->get('selectedLang');
         $clientLang = new Session();
 
@@ -26,7 +28,7 @@ class MainController extends Controller {
     }
 
 //    LOAD INDEX TEMPLATE
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $browserLang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
@@ -35,16 +37,17 @@ class MainController extends Controller {
         $clientLang = new Session();
 
         if ($clientLang->has('selectedLang')) {
-            return $this->render('StoreBundle:Store:index.html.twig',
+            return $this->render('Store/Index/index.html.twig',
                 include_once(__TRANSDIR__ . $clientLang->get('selectedLang') . '.php'));
         } else {
             $clientLang->set('selectedLang', $browserLang);
-            return $this->render('StoreBundle:Store:index.html.twig',
-                include_once(__TRANSDIR__ . $clientLang->get('selectedLang'). '.php'));
+            return $this->render('Store/index.html.twig',
+                include_once(__TRANSDIR__ . $clientLang->get('selectedLang') . '.php'));
         }
     }
 
-    public function getCurrencyListAction() {
+    public function getCurrencyListAction()
+    {
         $currencyRepo = $this->getDoctrine()->getRepository('StoreBundle:Currency');
 
         $currencies = $currencyRepo->findAll();
@@ -55,5 +58,4 @@ class MainController extends Controller {
             array('currencies' => $currencies)
         );
     }
-
 }
