@@ -36,21 +36,21 @@
 
             <div class="col-lg-1 stores">
                 <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                        id="loginBtn" location="stores" onclick="btnNav('stores')">
+                        id="loginBtn"  onclick="window.location='{{ path('store_stores_loc') }}'">
                     {{ stores }}
                 </button>
             </div>
 
             <div class="col-lg-1 contact">
                 <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                        id="loginBtn" location="stores" onclick="btnNav('contact')">
+                        id="loginBtn" onclick="btnNav('contact')">
                     {{ contact_us }}
                 </button>
             </div>
 
             <div class="col-lg-1 wishlist">
                 <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                        id="loginBtn" location="wishlist" onclick="btnNav('wishlist')">
+                        id="loginBtn" onclick="btnNav('wishlist')">
                     {{ wishlist }}
                 </button>
             </div>
@@ -123,21 +123,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-1" style="border: 1px solid black">col-lg-2</div>
-                <div class="col-lg-1" style="border: 1px solid black">col-lg-1</div>
-                <div class="col-lg-1" style="border: 1px solid black">col-lg-1</div>
-                {#<div class="col-lg-2 col-md-2 hidden-sm hidden-xs contact-block">#}
-                    {#<button type="button" class="btn btn-primary contact-button">#}
-                        {#<span class="glyphicon glyphicon-earphone"></span>#}
-                        {#{{ contact_us }}#}
-                    {#</button>#}
-                {#</div>#}
-                {#<div class="col-lg-1 col-md-2 hidden-sm hidden-xs cart-block" style="border: 1px solid black">#}
-                    {#<button type="button" class="btn btn-primary shopping-cart">#}
-                        {#<span class="glyphicon glyphicon-shopping-cart"></span>#}
-                        {#{{ cart }} (0)#}
-                    {#</button>#}
-                {#</div>#}
+                <div class="col-lg-1"></div>
+                <div class="col-lg-1"></div>
+                <div class="col-lg-1 col-md-2 hidden-sm hidden-xs cart">
+                    <button type="button" class="btn btn-primary shopping-cart" onclick="window.location='{{ path('cart') }}'">
+                        <span class="badge cart-items">0</span>
+                        <span class="glyphicon glyphicon-shopping-cart cartIcon"></span>
+                    </button>
+                </div>
+
                 <!--VISIBLE ONLY ON TABLETS AND MOBILES-->
                 <div class="hidden-lg hidden-md col-sm-7 col-xs-6"></div>
                 <div class="hidden-lg hidden-md col-sm-1 sm-xs-col col-xs-1">

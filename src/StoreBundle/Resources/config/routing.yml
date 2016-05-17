@@ -14,6 +14,10 @@ store_stores_loc:
     path: /stores
     defaults: { _controller: StoreBundle:Stores:stores }
 
+cart:
+    path: /cart
+    defaults: { _controller: StoreBundle:Cart:cart }
+
 admin_login:
     path: /admin
     defaults: { _controller: StoreBundle:Security:adminLogin }

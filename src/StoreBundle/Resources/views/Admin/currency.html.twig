@@ -59,7 +59,6 @@
     <table class="table currency-tbl">
         <thead>
         <tr>
-            <td>id</td>
             <td>name</td>
             <td>code</td>
             <td>rate</td>
@@ -70,7 +69,6 @@
         <tbody>
         {% for currency in currencies %}
             <tr>
-                <td>{{ currency.id }}</td>
                 <td>{{ currency.name }}</td>
 
                 <td>{{ currency.code }}</td>
@@ -129,8 +127,8 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" id="{{ currency.id }}"
-                                            onclick="editCurrency(this)">Save
+                                    <button type="button" class="btn btn-success saveEditedBtn" id=""
+                                        onclick="editCurrency(this)">Save
                                     </button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Discard</button>
                                 </div>
@@ -185,128 +183,5 @@
         {% endfor %}
         </tbody>
     </table>
-    <script>
-
-        function editCurrency(btn) {
-            console.log();
-            {#var editName = $('#curNameEdit').val();#}
-            {#var editCode = $('#curCodeEdit').val();#}
-            {#var editRate = $('#curRateEdit').val();#}
-            {#var editStat = $('#isDefaultEdit').prop('checked');#}
-
-            {#var editArray = {#}
-                {#id,#}
-                {#editName,#}
-                {#editCode,#}
-                {#editRate,#}
-                {#editStat#}
-            {#};#}
-
-            {#$.ajax({#}
-                {#url: "{{ path('update_currency') }}",#}
-                {#method: "POST",#}
-                {#data: {#}
-                    {#"updateData": editArray#}
-                {#},#}
-                {#success: function (data) {#}
-                    {#if (data === 'true') {#}
-                        {#location.reload();#}
-                    {#} else {#}
-                        {#alert('During operation an error was ocured');#}
-                    {#}#}
-                {#}#}
-            {#});#}
-        }
-
-        function editModalBtn(btn) {
-            console.log(btn.id);
-            var id = btn.id;
-            var name = $('#' + id).attr('data-curname');
-            var code = $('#' + id).attr('data-curcode');
-            var defcur = $('#' + id).attr('data-isdefault');
-            var rate = $('#' + id).attr('data-currate');
-
-            $('#curNameEdit').attr('value', name);
-            $('#curCodeEdit').attr('value', code);
-            $('#curRateEdit').attr('value', rate);
-            if (defcur == 1) {
-                $('#isDefaultEdit').attr('checked', true);
-            }
-
-            return id;
-        }
-
-        function deleteCurConf(btn) {
-            var curName = $(btn).data('curname');
-            console.log(curName);
-
-            $('#deleteCurName').text(curName);
-            $('.deleteBtn').attr('id', btn.id);
-        }
-
-        function deleteCurrency(id) {
-            console.log(id);
-            $.ajax({
-                url: "{{ path('delete_currency') }}",
-                method: "POST",
-                data: {
-                    "id": id
-                },
-                success: function (data) {
-                    if (data === 'true') {
-                        location.reload();
-                    } else {
-                        alert('During operation an error was ocured');
-                    }
-                }
-            })
-        }
-
-        $('#addCurrencyError').attr('hidden', true);
-
-        $(document).ready(function () {
-            $('[data-tooltip="tooltip"]').tooltip();
-        });
-
-        $('#isDefault').click(function () {
-
-            var isChecked = $('#isDefault').prop('checked');
-            if (isChecked == true) {
-                $('#curRate').prop('disabled', true);
-                $('#curRate').val('1');
-            } else {
-                $('#curRate').prop('disabled', false);
-                $('#curRate').val('');
-            }
-        });
-
-        function addCurrency(form) {
-
-            var curName = $('#curName').val();
-            var curCode = $('#curCode').val();
-            var isDefault = $('#isDefault').prop('checked');
-            var curRate = $('#curRate').val();
-            var data = {
-                curName,
-                curCode,
-                isDefault,
-                curRate
-            };
-            $.ajax({
-                type: "POST",
-                url: "{{ path('add_new_currency') }}",
-                data: {
-                    "newCurrency": data
-                },
-                success: function (data) {
-                    console.log(data);
-                    if (data === 'false') {
-                        $('#addCurrencyError').attr('hidden', false);
-                    } else {
-                        location.reload();
-                    }
-                }
-            });
-        }
-    </script>
+    <script src="{{ asset('js/Admin/currencyController.js') }}"></script>
 </div>
