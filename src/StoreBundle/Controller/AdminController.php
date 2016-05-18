@@ -8,6 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use StoreBundle\Entity\Currency;
+use StoreBundle\Entity\Keywords;
+use StoreBundle\Entity\Lang;
+use StoreBundle\Entity\Pages;
+use StoreBundle\Entity\Translations;
 
 
 class AdminController extends Controller
@@ -89,8 +93,9 @@ class AdminController extends Controller
             return new Response('false');
         }
     }
-    
-    public function updateCurrencyAction(Request $request) {
+
+    public function updateCurrencyAction(Request $request)
+    {
 
         $data = $request->get('updateData');
 
@@ -116,5 +121,59 @@ class AdminController extends Controller
             die;
         }
     }
+
+    public function settingsLangAction()
+    {
+
+        $langRepo = $this->getDoctrine()->getRepository('StoreBundle:Lang');
+
+        $langs = $langRepo->findAll();
+
+        $pagesRepo = $this->getDoctrine()->getRepository('StoreBundle:Pages');
+
+        $pages = $pagesRepo->findAll();
+
+//        var_dump($langs);
+
+        return $this->render('StoreBundle:Admin:lang.html.twig', array(
+            'title' => 'Languages',
+            'langs' => $langs,
+            'pages' => $pages
+        ));
+    }
+
+    public function getTranslateByPageAction(Request $request)
+    {
+
+        $pageId = $request->get('id');
+
+        $langCode = $request->get('defaultLang');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $get = $em->createQueryBuilder();
+
+        $get
+            ->select('k.keywordVal', 't.translation')
+            ->from('StoreBundle\Entity\Pages', 'p')
+            ->leftJoin('StoreBundle\Entity\Keywords', 'k', 'WITH', 'k.pageId = p.pageId')
+            ->leftJoin('StoreBundle\Entity\Translations', 't', 'WITH', 'k.keywordId = t.keywordId')
+            ->leftJoin('StoreBundle\Entity\Lang', 'l', 'WITH', 'l.langCode = t.langCode')
+            ->where('p.pageId = '.$pageId)
+            ->andWhere("l.langCode = '$langCode'");
+
+        $query = $get->getQuery();
+
+        $result = $query->getResult();
+
+        $data = json_encode($result);
+
+        echo $data;
+
+        die;
+
+    }
+
+
 }
 

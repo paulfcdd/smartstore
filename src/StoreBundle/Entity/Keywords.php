@@ -35,9 +35,9 @@ class Keywords
     private $keywordVal;
 
     /**
-     * @ORM\Column(type="string", length=256)
+     * @ORM\Column(type="integer", length=5)
      */
-    private $keywordPage;
+    private $pageId;
 
 
 
@@ -97,5 +97,29 @@ class Keywords
     public function getKeywordPage()
     {
         return $this->keywordPage;
+    }
+
+    /**
+     * Set pageId
+     *
+     * @param integer $pageId
+     *
+     * @return Keywords
+     */
+    public function setPageId($pageId)
+    {
+        $this->pageId = $pageId;
+
+        return $this;
+    }
+
+    /**
+     * Get pageId
+     *
+     * @return integer
+     */
+    public function getPageId()
+    {
+        return $this->pageId;
     }
 }

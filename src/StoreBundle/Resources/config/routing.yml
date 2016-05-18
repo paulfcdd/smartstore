@@ -47,6 +47,10 @@ currency:
     path: /admin/cpanel/currency
     defaults: { _controller: StoreBundle:Admin:settingsCurrency }
 
+lang:
+    path: /admin/cpanel/lang
+    defaults: { _controller: StoreBundle:Admin:settingsLang }
+
 add_new_currency:
     path: /admin/cpanel/addnewcurrency
     defaults: { _controller: StoreBundle:Admin:addNewCurrency }
@@ -58,3 +62,8 @@ delete_currency:
 update_currency:
     path: admin/cpanel/updatecurrency
     defaults: { _controller: StoreBundle:Admin:updateCurrency }
+
+
+get_transl_by_page:
+    path: admin/cpanel/langbypage
+    defaults: { _controller: StoreBundle:Admin:getTranslateByPage }

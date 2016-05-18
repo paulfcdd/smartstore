@@ -1,0 +1,72 @@
+<div class="langTpl container-fluid">
+    <div class="row top-block">
+        <div class="pull-left">
+            <h3>{{ title }}</h3>
+        </div>
+    </div>
+    <div class="row lang-list" style="display: inline-block; width: 100%">
+        {% for page in pages %}
+            <div class="col-lg-1">
+                <button id="{{ page.pageId }}" type="button" class="btn btn-primary"
+                        onclick="getByPage(this)">{{ page.pageName }}</button>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row lang-selector">
+        <div class="dropdown pull-right">
+            <button class="btn btn-info dropdown-toggle dropdown-btn" type="button"
+                    id="lang"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                {% for lang in langs %}
+                    <li id="{{ lang.langId }}"><a href="" data-value="{{ lang.langCode }}">{{ lang.langName }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row translation-block">
+        <table>
+            <thead>
+            <tr>
+                <th>Keyword</th>
+                <th>Translation</th>
+            </tr>
+            </thead>
+            <tbody id="tblBody">
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $('.dropdown-menu').find('#1').addClass("default-lang");
+
+        function getByPage(btn) {
+
+            var id = btn.id;
+            var defaultLang = 'en';
+
+            $.ajax({
+                url: '{{ path('get_transl_by_page') }}',
+                method: 'POST',
+                data: {
+                    'id': id,
+                    'defaultLang': defaultLang
+                },
+                success: function(data) {
+                    var obj = jQuery.parseJSON(data);
+
+                    obj.forEach(function(items) {
+
+                    });
+                }
+            });
+
+        }
+    </script>
+
+    <script src="{{ asset('js/dropdowns.js') }}"></script>
+
+</div>

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Welcome to CPanel</title>
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/admin/cpanel.css') }}" rel="stylesheet">
@@ -35,11 +35,6 @@
     <div id="sidebar-wrapper">
         <h2 onclick="location.replace('{{ path('admin_control_panel') }}')"> Hello {{ name }}</h2>
         <ul class="nav nav-stacked" id="accordion1">
-            {#<li>#}
-            {#<a href="{{ asset('/admin/cpanel/dashboard') }}">#}
-            {#<span class="glyphicon glyphicon-dashboard"></span>&nbsp;Dashboard#}
-            {#</a>#}
-            {#</li>#}
             <li>
                 <a data-toggle="collapse" data-parent="#accordion1" href="#firstLink">
                     <span class="glyphicon glyphicon-cog"></span>&nbsp;System
@@ -52,10 +47,8 @@
                                     class="glyphicon glyphicon-menu-right"></span>&nbsp;Currency</a></li>
                     <li id="locale" onclick="loadTemplate(this.id)"><a href="#"><span
                                     class="glyphicon glyphicon-menu-right"></span>&nbsp;Locale</a></li>
-                    {#<li id="location" onclick="loadTemplate(this.id)">><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Location</a></li>#}
-                    {#<li id="countries" onclick="loadTemplate(this.id)">><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Countries</a></li>#}
-                    {#<li id="order_status" onclick="loadTemplate(this.id)">><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Order status</a></li>#}
-                    {#<li id="stock_status" onclick="loadTemplate(this.id)">><a href="#"><span class="glyphicon glyphicon-menu-right"></span>&nbsp;Stock status</a></li>#}
+                    <li id="locale" onclick="loadTemplate(this.id)"><a href="#"><span
+                                    class="glyphicon glyphicon-menu-right"></span>&nbsp;Test</a></li>
                 </ul>
 
             </li>
@@ -121,37 +114,40 @@
 
         switch (id) {
             case 'currency':
-                    window.location.hash = id;
+                window.location.hash = id;
                 $('#load').load("{{ path('currency') }}", function (response, status, xhr) {
                     if (status == 'error') {
-                        $('#load').text('During loading ' + id + ' template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+                        $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
                     }
                 });
                 break;
             case 'language':
+                window.location.hash = id;
+                console.log(id);
+                $('#load').load("{{ path('lang') }}", function (response, status, xhr) {
+                    if (status == 'error') {
+                        $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+                    }
+                });
                 break;
             case 'locale':
                 break;
 
         }
-
-        $('#load').load("{{ asset('tpl/') }}" + id + "{{ ('.html.twig') }}", function (response, status, xhr) {
-        if (status == 'error') {
-        $('#load').text('During loading this page execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
-        }
-        });
-
-        {#$('#load').load("{{ include('tpl/') }}" + id + "{{ ('.html.twig') }}", function (response, status, xhr) {#}
-        {#if (status == 'error') {#}
-        {#$('#load').text('During loading ' + id + ' template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');#}
-        {#}#}
-        {#});#}
     }
 
     if (window.location.hash == '#currency') {
         $('#load').load("{{ path('currency') }}", function (response, status, xhr) {
             if (status == 'error') {
-                $('#load').text('During loading ' + id + ' template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+                $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+            }
+        });
+    }
+
+    if (window.location.hash == '#language') {
+        $('#load').load("{{ path('lang') }}", function (response, status, xhr) {
+            if (status == 'error') {
+                $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
             }
         });
     }
@@ -165,5 +161,3 @@
 </body>
 
 </html>
-
-{#Hello {{ name }}#}
