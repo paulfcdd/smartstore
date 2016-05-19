@@ -67,3 +67,7 @@ update_currency:
 get_transl_by_page:
     path: admin/cpanel/langbypage
     defaults: { _controller: StoreBundle:Admin:getTranslateByPage }
+
+show_translations:
+    path: admin/cpanel/translations/{id}
+    defaults: { _controller: StoreBundle:Admin:showTranslations }

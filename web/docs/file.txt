@@ -1,3 +1,5 @@
 http://dbdesigner.net/designer/schema/33904
 
 http://www.htmlgoodies.com/beyond/css/working_w_tables_using_jquery.html
+
+https://www.sitepoint.com/premium/dashboard#panel-recommended

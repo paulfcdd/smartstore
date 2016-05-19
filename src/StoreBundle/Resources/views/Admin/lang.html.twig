@@ -27,18 +27,8 @@
         </div>
     </div>
 
-    <div class="row translation-block">
-        <table>
-            <thead>
-            <tr>
-                <th>Keyword</th>
-                <th>Translation</th>
-            </tr>
-            </thead>
-            <tbody id="tblBody">
+    <div class="row translation-block" id="loadTbl">
 
-            </tbody>
-        </table>
     </div>
     <script>
         $('.dropdown-menu').find('#1').addClass("default-lang");
@@ -55,12 +45,11 @@
                     'id': id,
                     'defaultLang': defaultLang
                 },
-                success: function(data) {
+                success: function (data) {
                     var obj = jQuery.parseJSON(data);
-
-                    obj.forEach(function(items) {
-
-                    });
+                    var route = "{{ path('show_translations', {'id': "ID"}) }}";
+                    var routeId = route.replace('ID', id);
+                    $("#loadTbl").load(routeId);
                 }
             });
 

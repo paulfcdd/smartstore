@@ -133,8 +133,6 @@ class AdminController extends Controller
 
         $pages = $pagesRepo->findAll();
 
-//        var_dump($langs);
-
         return $this->render('StoreBundle:Admin:lang.html.twig', array(
             'title' => 'Languages',
             'langs' => $langs,
@@ -172,6 +170,15 @@ class AdminController extends Controller
 
         die;
 
+    }
+
+    public function showTranslationsAction($id) {
+
+//        $test = $this->get('store.lang')->indexAction();
+
+        return $this->render('Store/Admin/lang/'.$id.'.html.twig', array(
+            "title" => 'kek'
+        ));
     }
 
 
