@@ -126,17 +126,12 @@ class AdminController extends Controller
     public function settingsLangAction()
     {
 
-        $langRepo = $this->getDoctrine()->getRepository('StoreBundle:Lang');
-
-        $langs = $langRepo->findAll();
-
         $pagesRepo = $this->getDoctrine()->getRepository('StoreBundle:Pages');
 
         $pages = $pagesRepo->findAll();
 
         return $this->render('StoreBundle:Admin:lang.html.twig', array(
             'title' => 'Languages',
-            'langs' => $langs,
             'pages' => $pages
         ));
     }
@@ -144,9 +139,9 @@ class AdminController extends Controller
     public function getTranslateByPageAction(Request $request)
     {
 
-        $pageId = $request->get('id');
+        $pageId = $request->get('pageId');
 
-        $langCode = $request->get('defaultLang');
+        $langCode = $request->get('langCode');
 
         $em = $this->getDoctrine()->getManager();
 
@@ -172,11 +167,12 @@ class AdminController extends Controller
 
         $data = $request->get('data');
 
-//        var_dump($data);
-//        $test = $this->get('store.lang')->indexAction();
+        $langRepo = $this->getDoctrine()->getRepository('StoreBundle:Lang');
+
+        $langs = $langRepo->findAll();
 
         return $this->render('Store/Admin/lang/'.$id.'.html.twig', array(
-            "title" => 'kek',
+            'langs' => $langs,
             "translations"  => $data
         ));
     }

@@ -1,1 +1,106 @@
-Cart
+<div class="langTpl">
+    <button class="btn btn-success pull-right"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+    <div class="dropdown pull-right">
+        <button class="btn btn-info dropdown-toggle dropdown-btn" type="button"
+                id="lang"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            {% for lang in langs %}
+                <li id="{{ lang.langCode }}"
+                    onclick="switchLang(this)">
+                    <a href="#language"
+                       data-value="{{ lang.langCode }}">
+                        {{ lang.langName }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Keyword</th>
+            <th>Translation</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for translation in translations %}
+            <tr>
+                <td>
+                    <label>{{ translation.keywordVal }}</label>
+                </td>
+                <td>
+                    <textarea class="form-control" rows="2" id="keywordVal"
+                              style="width: 100%">{{ translation.translation }}</textarea>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#removeKeywordConf">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+            </tr>
+
+            <!-- Modal -->
+            <div id="removeKeywordConf" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Remove keyword confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Are you sure you want to delete selected element? Removing of this element
+                                can cause system errors and lead to faulty operation of the system
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning"> Delete </button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td class="text-center">
+                <button class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+        function switchLang(btn) {
+            console.log(btn.id);
+
+            var pageId = '3';
+            var langCode = btn.id;
+
+            $.ajax({
+                url: '{{ path('get_transl_by_page') }}',
+                method: 'POST',
+                data: {
+                    'pageId': pageId,
+                    'langCode': langCode
+                },
+                success: function (data) {
+                    var route = "{{ path('show_translations', {'id': "ID"}) }}";
+                    var routeId = route.replace('ID', pageId);
+                    $("#loadTbl").load(routeId, {'data': data});
+                }
+            });
+        }
+    </script>
+</div>

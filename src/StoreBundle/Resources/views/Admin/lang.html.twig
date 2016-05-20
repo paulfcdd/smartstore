@@ -12,21 +12,6 @@
             </div>
         {% endfor %}
     </div>
-    <div class="row lang-selector">
-        <div class="dropdown pull-right">
-            <button class="btn btn-info dropdown-toggle dropdown-btn" type="button"
-                    id="lang"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                {% for lang in langs %}
-                    <li id="{{ lang.langId }}"><a href="#language" data-value="{{ lang.langCode }}"
-                        data-current-page="">{{ lang.langName }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
 
     <div class="row translation-block" id="loadTbl">
 
@@ -36,20 +21,19 @@
 
         function getByPage(btn) {
 
-            var id = btn.id;
-            var defaultLang = 'en';
+            var pageId = btn.id;
+            var langCode = 'en';
 
             $.ajax({
                 url: '{{ path('get_transl_by_page') }}',
                 method: 'POST',
                 data: {
-                    'id': id,
-                    'defaultLang': defaultLang
+                    'pageId': pageId,
+                    'langCode': langCode
                 },
                 success: function (data) {
-                    console.log(data[0]);
                     var route = "{{ path('show_translations', {'id': "ID"}) }}";
-                    var routeId = route.replace('ID', id);
+                    var routeId = route.replace('ID', pageId);
                     $("#loadTbl").load(routeId, {'data': data});
                 }
             });
