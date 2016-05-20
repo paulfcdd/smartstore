@@ -1,1 +1,23 @@
-{{ title }}
+<div class="langTpl">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Keyword</th>
+            <th>Translation</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for translation in translations %}
+            <tr>
+                <td>
+                    <label>{{ translation.keywordVal }}</label>
+                </td>
+                <td>
+                    <textarea class="form-control" rows="2" id="keywordVal"
+                              style="width: 100%">{{ translation.translation }}</textarea>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

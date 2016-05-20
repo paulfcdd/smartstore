@@ -4,6 +4,7 @@ namespace StoreBundle\Controller;
 
 use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -164,20 +165,19 @@ class AdminController extends Controller
 
         $result = $query->getResult();
 
-        $data = json_encode($result);
-
-        echo $data;
-
-        die;
-
+        return new JsonResponse($result);
     }
 
-    public function showTranslationsAction($id) {
+    public function showTranslationsAction($id, Request $request) {
 
+        $data = $request->get('data');
+
+//        var_dump($data);
 //        $test = $this->get('store.lang')->indexAction();
 
         return $this->render('Store/Admin/lang/'.$id.'.html.twig', array(
-            "title" => 'kek'
+            "title" => 'kek',
+            "translations"  => $data
         ));
     }
 

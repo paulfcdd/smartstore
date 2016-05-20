@@ -21,7 +21,8 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 {% for lang in langs %}
-                    <li id="{{ lang.langId }}"><a href="" data-value="{{ lang.langCode }}">{{ lang.langName }}</a></li>
+                    <li id="{{ lang.langId }}"><a href="#language" data-value="{{ lang.langCode }}"
+                        data-current-page="">{{ lang.langName }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -46,10 +47,10 @@
                     'defaultLang': defaultLang
                 },
                 success: function (data) {
-                    var obj = jQuery.parseJSON(data);
+                    console.log(data[0]);
                     var route = "{{ path('show_translations', {'id': "ID"}) }}";
                     var routeId = route.replace('ID', id);
-                    $("#loadTbl").load(routeId);
+                    $("#loadTbl").load(routeId, {'data': data});
                 }
             });
 
