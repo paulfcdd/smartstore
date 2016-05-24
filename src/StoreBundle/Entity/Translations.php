@@ -16,7 +16,6 @@ class Translations
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
 
     private $keywordId;

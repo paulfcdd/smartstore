@@ -44,7 +44,7 @@ class Currency
     private $isDefault;
 
     /**
-     * @ORM\Column(type="decimal", precision=3, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=4)
      */
     private $rate;
 

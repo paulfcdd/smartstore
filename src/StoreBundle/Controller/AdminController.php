@@ -153,7 +153,7 @@ class AdminController extends Controller
             ->leftJoin('StoreBundle\Entity\Keywords', 'k', 'WITH', 'k.pageId = p.pageId')
             ->leftJoin('StoreBundle\Entity\Translations', 't', 'WITH', 'k.keywordId = t.keywordId')
             ->leftJoin('StoreBundle\Entity\Lang', 'l', 'WITH', 'l.langCode = t.langCode')
-            ->where('p.pageId = '.$pageId)
+            ->where('p.pageId = ' . $pageId)
             ->andWhere("l.langCode = '$langCode'");
 
         $query = $get->getQuery();
@@ -163,7 +163,8 @@ class AdminController extends Controller
         return new JsonResponse($result);
     }
 
-    public function showTranslationsAction($id, Request $request) {
+    public function showTranslationsAction($id, Request $request)
+    {
 
         $data = $request->get('data');
 
@@ -171,12 +172,77 @@ class AdminController extends Controller
 
         $langs = $langRepo->findAll();
 
-        return $this->render('Store/Admin/lang/'.$id.'.html.twig', array(
+        return $this->render('Store/Admin/lang/' . $id . '.html.twig', array(
             'langs' => $langs,
-            "translations"  => $data
+            "translations" => $data
         ));
     }
 
+    public function addKeywordAction(Request $request)
+    {
+
+        $pageId = $request->get('pageId');
+
+        $kVal = $request->get('kVal');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $keywords = new Keywords();
+
+
+        $keywords->setKeywordVal($kVal);
+
+        $keywords->setPageId($pageId);
+
+        $em->persist($keywords);
+
+        $em->flush();
+
+        echo "ok";
+
+        die;
+
+    }
+
+    public function addTranslationsAction (Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $get = $em->createQueryBuilder();
+
+        $get
+            ->select('c.keywordId')
+            ->from('StoreBundle\Entity\Keywords', 'c')
+            ->orderBy('c.keywordId', 'DESC')
+            ->setMaxResults('1');
+
+        $query = $get->getQuery();
+
+        $transArr = $request->get('transArr');
+
+        $result = $query->getResult();
+
+        $kId = $result[0]['keywordId'];
+
+        $translations = new Translations();
+
+        foreach($transArr as $langCode => $translate) {
+
+            $translations->setKeywordId($kId);
+
+            $translations->setLangCode($langCode);
+
+            $translations->setTranslation($translate);
+
+            $em->persist($translations);
+
+            $em->flush();
+
+            echo "ok";
+
+        }
+        die;
+
+    }
 
 }
 

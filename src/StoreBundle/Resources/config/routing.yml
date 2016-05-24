@@ -71,3 +71,11 @@ get_transl_by_page:
 show_translations:
     path: admin/cpanel/translations/{id}
     defaults: { _controller: StoreBundle:Admin:showTranslations }
+
+add_keyword:
+    path: /admin/cpanel/addkeyword
+    defaults: { _controller: StoreBundle:Admin:addKeyword }
+
+add_translate:
+    path: /admin/cpanel/addtranslate
+    defaults: { _controller: StoreBundle:Admin:addTranslations }
