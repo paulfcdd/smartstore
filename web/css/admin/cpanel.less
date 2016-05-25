@@ -25,11 +25,40 @@
       }
     }
   }
-}
 
-//#wrapper.toggled {
-//  padding-left: 250px;
-//}
+  .langTpl {
+
+    .top-row {
+    }
+
+    .lang-row {
+
+      .col-lg-1 {
+        padding: 0 10px 0 0;
+        display: inline-block;
+        width: inherit;
+
+        button {
+          &:first-letter {
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+
+    .control-row {
+      margin-bottom: 10px;
+
+      .dropdown-menu {
+      margin-left: -75px
+      }
+
+      .buttons {
+        padding: 0 !important;
+      }
+    }
+  }
+}
 
 #sidebar-wrapper {
   z-index: 1000;
@@ -83,7 +112,6 @@
       }
     }
 
-
     a {
       color: #ffffff;
       text-decoration: none;
@@ -103,8 +131,6 @@
     }
   }
 }
-
-
 
 #wrapper.toggled #sidebar-wrapper {
   width: 250px;

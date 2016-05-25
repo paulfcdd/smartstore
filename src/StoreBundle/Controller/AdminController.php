@@ -130,9 +130,14 @@ class AdminController extends Controller
 
         $pages = $pagesRepo->findAll();
 
+        $langRepo = $this->getDoctrine()->getRepository('StoreBundle:Lang');
+
+        $langs = $langRepo->findAll();
+
         return $this->render('StoreBundle:Admin:lang.html.twig', array(
             'title' => 'Languages',
-            'pages' => $pages
+            'pages' => $pages,
+            'langs'=> $langs
         ));
     }
 
@@ -148,7 +153,7 @@ class AdminController extends Controller
         $get = $em->createQueryBuilder();
 
         $get
-            ->select('k.keywordVal', 't.translation')
+            ->select('k.keywordVal', 't.translation', 'k.keywordId')
             ->from('StoreBundle\Entity\Pages', 'p')
             ->leftJoin('StoreBundle\Entity\Keywords', 'k', 'WITH', 'k.pageId = p.pageId')
             ->leftJoin('StoreBundle\Entity\Translations', 't', 'WITH', 'k.keywordId = t.keywordId')
@@ -245,4 +250,3 @@ class AdminController extends Controller
     }
 
 }
-

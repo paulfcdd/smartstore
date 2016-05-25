@@ -1,28 +1,10 @@
 <div class="langTpl">
-    <button class="btn btn-success pull-right"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-    <div class="dropdown pull-right">
-        <button class="btn btn-info dropdown-toggle dropdown-btn" type="button"
-                id="lang"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            {% for lang in langs %}
-                <li id="{{ lang.langCode }}"
-                    onclick="switchLang(this)">
-                    <a href="#language"
-                       id="{{ lang.langCode }}">
-                        {{ lang.langName }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped translations">
         <thead>
         <tr>
             <th>Keyword</th>
             <th>Translation</th>
+            <th></th>
             <th></th>
         </tr>
         </thead>
@@ -30,7 +12,9 @@
         {% for translation in translations %}
             <tr>
                 <td>
-                    <label>{{ translation.keywordVal }}</label>
+                    <textarea class="form-control" rows="2" id="keywordVal"
+                              style="width: 100%">{{ translation.keywordVal }}</textarea>
+
                 </td>
                 <td>
                     <textarea class="form-control" rows="2" id="keywordVal"
@@ -39,6 +23,11 @@
                 <td class="text-center">
                     <button class="btn btn-danger" data-toggle="modal" data-target="#removeKeywordConf">
                         <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-success" id="{{ translation.keywordId }}" onclick="singleRowSave()">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
                     </button>
                 </td>
             </tr>
@@ -60,7 +49,7 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning"> Delete</button>
+                            <button type="button" id="{{ translation.keywordId }}" class="btn btn-warning"> Delete</button>
                             <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
@@ -83,7 +72,6 @@
     </table>
     <div id="addNewKeyword" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -133,8 +121,9 @@
     </div>
     <script>
 
-        $('.dropdown-menu').find('#en').addClass("default-lang");
-
+        function singleRowSave() {
+            
+        }
 
         function saveKeyword() {
             var kVal = $("#newKewordVal").val();
@@ -147,7 +136,6 @@
                     pageId
                 },
                 success: function(data) {
-                    console.log(data);
                     $('.translations :input').each(function () {
 
                         var langCode = $(this).attr('id');
@@ -194,6 +182,8 @@
                 }
             });
         }
+
+        $('.dropdown-menu').find('#' + btn.id).addClass("default-lang");
     </script>
     <script src="{{ asset('js/dropdowns.js') }}"></script>
 </div>

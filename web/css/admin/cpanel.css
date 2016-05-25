@@ -16,6 +16,23 @@
   font-weight: bold;
   width: 20%;
 }
+#wrapper .langTpl .lang-row .col-lg-1 {
+  padding: 0 10px 0 0;
+  display: inline-block;
+  width: inherit;
+}
+#wrapper .langTpl .lang-row .col-lg-1 button:first-letter {
+  text-transform: capitalize;
+}
+#wrapper .langTpl .control-row {
+  margin-bottom: 10px;
+}
+#wrapper .langTpl .control-row .dropdown-menu {
+  margin-left: -75px;
+}
+#wrapper .langTpl .control-row .buttons {
+  padding: 0 !important;
+}
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;

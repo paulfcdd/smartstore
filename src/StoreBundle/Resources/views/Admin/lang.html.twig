@@ -1,23 +1,45 @@
 <div class="langTpl container-fluid">
-    <div class="row top-block">
-        <div class="pull-left">
-            <h3>{{ title }}</h3>
-        </div>
+    <div class="row top-row">
+        <h3> {{ title }}</h3>
     </div>
-    <div class="row lang-list" style="display: inline-block; width: 100%">
+    <div class="row lang-row">
         {% for page in pages %}
-            <div class="col-lg-1">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                 <button id="{{ page.pageId }}" type="button" class="btn btn-primary"
                         onclick="getByPage(this)">{{ page.pageName }}</button>
             </div>
         {% endfor %}
     </div>
-
+    <div class="row control-row">
+      <div class="col-lg-10 col-md-10 col-sm-10 hidden-xs"></div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 buttons">
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-floppy-disk"></span>
+                </button>
+                <div class="btn-group dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-btn" data-toggle="dropdown"><span class="caret"></span></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        {% for lang in langs %}
+                            <li id="{{ lang.langCode }}"
+                                onclick="switchLang(this)">
+                                <a href="#language"
+                                   id="{{ lang.langCode }}">
+                                    {{ lang.langName }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row translation-block" id="loadTbl">
 
     </div>
+
     <script>
-        $('.dropdown-menu').find('#1').addClass("default-lang");
+        $('.dropdown-menu').find('#en').addClass("default-lang");
 
         function getByPage(btn) {
 
@@ -26,7 +48,7 @@
 
             $.ajax({
                 url: '{{ path('get_transl_by_page') }}',
-                method: 'POST',
+                method: 'GET',
                 data: {
                     'pageId': pageId,
                     'langCode': langCode
@@ -37,8 +59,9 @@
                     $("#loadTbl").load(routeId, {'data': data});
                 }
             });
-
         }
+
+
     </script>
 
     <script src="{{ asset('js/dropdowns.js') }}"></script>
