@@ -41,7 +41,7 @@ class MainController extends Controller
                 include_once(__TRANSDIR__ . $clientLang->get('selectedLang') . '.php'));
         } else {
             $clientLang->set('selectedLang', $browserLang);
-            return $this->render('Store/index.html.twig',
+            return $this->render('Store/Index/index.html.twig',
                 include_once(__TRANSDIR__ . $clientLang->get('selectedLang') . '.php'));
         }
     }

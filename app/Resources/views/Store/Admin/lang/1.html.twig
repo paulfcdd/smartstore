@@ -12,13 +12,13 @@
         {% for translation in translations %}
             <tr>
                 <td>
-                    <textarea class="form-control" rows="2" id="keywordVal"
-                              style="width: 100%">{{ translation.keywordVal }}</textarea>
+            <textarea class="form-control" rows="2" id="keywordVal" data-id="{{ translation.keywordId }}"
+                      style="width: 100%">{{ translation.keywordVal }}</textarea>
 
                 </td>
                 <td>
-                    <textarea class="form-control" rows="2" id="keywordVal"
-                              style="width: 100%">{{ translation.translation }}</textarea>
+            <textarea class="form-control" rows="2" id="translation" data-id="{{ translation.keywordId }}"
+                      style="width: 100%">{{ translation.translation }}</textarea>
                 </td>
                 <td class="text-center">
                     <button class="btn btn-danger" data-toggle="modal" data-target="#removeKeywordConf">
@@ -26,7 +26,7 @@
                     </button>
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-success" id="{{ translation.keywordId }}" onclick="singleRowSave()">
+                    <button class="btn btn-success" id="{{ translation.keywordId }}" onclick="singleRowSave(this)">
                         <span class="glyphicon glyphicon-floppy-disk"></span>
                     </button>
                 </td>
@@ -49,7 +49,8 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="{{ translation.keywordId }}" class="btn btn-warning"> Delete</button>
+                            <button type="button" id="{{ translation.keywordId }}" class="btn btn-warning"> Delete
+                            </button>
                             <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
@@ -108,7 +109,7 @@
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick="saveKeyword()">
+                    <button type="button" class="btn btn-success" onclick="saveKeyword(this)">
                         <span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save
                     </button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -121,8 +122,10 @@
     </div>
     <script>
 
-        function singleRowSave() {
-            
+        function singleRowSave(btn) {
+            var id = btn.id;
+            var k = $("#keywordVal").data('id', id).val();
+            console.log(id + ', ' + k);
         }
 
         function saveKeyword() {
@@ -135,7 +138,7 @@
                     kVal,
                     pageId
                 },
-                success: function(data) {
+                success: function (data) {
                     $('.translations :input').each(function () {
 
                         var langCode = $(this).attr('id');
