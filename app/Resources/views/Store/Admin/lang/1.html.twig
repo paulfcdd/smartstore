@@ -1,5 +1,9 @@
 <div class="langTpl">
-    <table class="table table-bordered table-striped translations">
+    <div class="alert alert-success single-row-edit">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> Data was changed successfully.
+    </div>
+    <table class="table table-bordered table-striped translation-tbl">
         <thead>
         <tr>
             <th>Keyword</th>
@@ -12,12 +16,12 @@
         {% for translation in translations %}
             <tr>
                 <td>
-            <textarea class="form-control keywordVal-{{ translation.keywordId }}" rows="2"
+            <textarea class="form-control keywords keywordVal-{{ translation.keywordId }}" id="{{ translation.keywordId }}" rows="2"
                       style="width: 100%">{{ translation.keywordVal }}</textarea>
 
                 </td>
                 <td>
-            <textarea class="form-control translation-{{ translation.keywordId }}" rows="2"
+            <textarea class="form-control translations translation-{{ translation.keywordId }}" rows="2"
                       style="width: 100%">{{ translation.translation }}</textarea>
                 </td>
                 <td class="text-center">
@@ -122,7 +126,7 @@
     </div>
     <script>
 
-
+        $(".single-row-edit").attr('hidden', true);
 
         function switchLang(btn) {
 
@@ -147,6 +151,59 @@
         }
 
 
+        function saveAll() {
+            $('.translation-tbl tr:has(td)').each(function () {
+
+                var cell1 = $(this).find('.keywords');
+
+                var cell2 = $(this).find('.translations');
+
+                if (!cell1.val() && !cell2.val()) {
+                    return;
+                }
+
+                var keywordId = cell1.attr('id');
+
+                var pageId = '1';
+
+                var sysLang = '';
+
+                if (!window.lang) {
+                    sysLang = 'en';
+                } else {
+                    sysLang = window.lang;
+                }
+
+                var myObj = new Object();
+
+                myObj.keyword = cell1.val();
+
+                myObj.translation = cell2.val();
+
+                myObj.pageId = pageId;
+
+                myObj.lang = sysLang;
+
+                myObj.kwId = keywordId;
+
+                var myJson = JSON.stringify(myObj);
+
+//                console.log(myJson);
+
+                $.ajax({
+                    url: "{{ path('save_all') }}",
+                    method: "POST",
+                    data: {
+                        myJson
+                    },
+                    success: function (data) {
+                        if (data === '1') {
+                            $(".single-row-edit").attr('hidden', false);
+                        }
+                    }
+                });
+            });
+        }
 
         function singleRowSave(btn) {
             var sysLang = '';
@@ -158,8 +215,8 @@
             }
 
             var id = btn.id;
-            var kVal = $(".keywordVal-"+id).val();
-            var kTrans = $(".translation-"+id).val();
+            var kVal = $(".keywordVal-" + id).val();
+            var kTrans = $(".translation-" + id).val();
             var pageId = '1';
 
             $.ajax({
@@ -173,7 +230,9 @@
                     sysLang
                 },
                 success: function (data) {
-                    console.log(data);
+                    if (data === '1') {
+                        $(".single-row-edit").attr('hidden', false);
+                    }
                 }
             });
 
@@ -215,7 +274,6 @@
             });
 
         }
-
 
 
         $('.dropdown-menu').find('#' + btn.id).addClass("default-lang");

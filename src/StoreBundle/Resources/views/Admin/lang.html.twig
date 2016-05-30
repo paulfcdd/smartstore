@@ -11,14 +11,15 @@
         {% endfor %}
     </div>
     <div class="row control-row">
-      <div class="col-lg-10 col-md-10 col-sm-10 hidden-xs"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10 hidden-xs"></div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 buttons">
             <div class="btn-group pull-right">
-                <button type="button" class="btn btn-success">
+                <button type="button" class="btn btn-success" onclick="saveAll()">
                     <span class="glyphicon glyphicon-floppy-disk"></span>
                 </button>
                 <div class="btn-group dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-btn" data-toggle="dropdown"><span class="caret"></span></button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-btn" data-toggle="dropdown">
+                        <span class="caret"></span></button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                         {% for lang in langs %}
                             <li id="{{ lang.langCode }}"

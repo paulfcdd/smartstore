@@ -83,3 +83,7 @@ add_translate:
 single_row_update:
     path: /admin/cpanel/singlerowupdate
     defaults: { _controller: StoreBundle:Admin:singleRowSave }
+
+save_all:
+    path: /admin/cpanel/saveall
+    defaults: { _controller: StoreBundle:Admin:saveAll }

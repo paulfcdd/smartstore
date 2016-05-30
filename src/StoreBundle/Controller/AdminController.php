@@ -137,7 +137,7 @@ class AdminController extends Controller
         return $this->render('StoreBundle:Admin:lang.html.twig', array(
             'title' => 'Languages',
             'pages' => $pages,
-            'langs'=> $langs
+            'langs' => $langs
         ));
     }
 
@@ -209,7 +209,8 @@ class AdminController extends Controller
 
     }
 
-    public function addTranslationsAction (Request $request) {
+    public function addTranslationsAction(Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $get = $em->createQueryBuilder();
@@ -230,7 +231,7 @@ class AdminController extends Controller
 
         $translations = new Translations();
 
-        foreach($transArr as $langCode => $translate) {
+        foreach ($transArr as $langCode => $translate) {
 
             $translations->setKeywordId($kId);
 
@@ -249,7 +250,8 @@ class AdminController extends Controller
 
     }
 
-    public function singleRowSaveAction(Request $request) {
+    public function singleRowSaveAction(Request $request)
+    {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -257,7 +259,7 @@ class AdminController extends Controller
 
         $keywordVal = $request->get('kVal');
 
-        $kTrans =$request->get('kTrans');
+        $kTrans = $request->get('kTrans');
 
         $pageId = $request->get('pageId');
 
@@ -276,7 +278,69 @@ class AdminController extends Controller
 
         $keywordUpdateResult = $updateKeywords->getResult();
 
-        echo $keywordUpdateResult;
+        $queryTranslation = $em->createQueryBuilder();
+
+        $queryTranslation
+            ->update('StoreBundle\Entity\Translations', 't')
+            ->set('t.translation', '?2')
+            ->where('t.keywordId = ' . $id)
+            ->andWhere("t.langCode = '$sysLang'")
+            ->setParameter(2, $kTrans);
+
+        $updateTranslations = $queryTranslation->getQuery();
+
+        $translationUpdateResult = $updateTranslations->getResult();
+
+        echo $translationUpdateResult;
+
+        die;
+    }
+
+    public function saveAllAction (Request $request) {
+        $em = $this->getDoctrine()->getManager();
+
+        $dataArr = $request->get('myJson');
+
+        $dataArr = json_decode($dataArr);
+
+        $kId = $dataArr->kwId;
+
+        $keywordVal = $dataArr->keyword;
+
+        $kTrans = $dataArr->translation;
+
+        $pageId = $dataArr->pageId;
+
+        $sysLang = $dataArr->lang;
+
+        $query = $em->createQueryBuilder();
+
+        $query
+            ->update('StoreBundle\Entity\Keywords', 'k')
+            ->set('k.keywordVal', '?1')
+            ->where('k.keywordId = ' . $kId)
+            ->andWhere('k.pageId = ' . $pageId)
+            ->setParameter(1, $keywordVal);
+
+        $updateKeywords = $query->getQuery();
+
+        $keywordUpdateResult = $updateKeywords->getResult();
+
+        $queryTranslation = $em->createQueryBuilder();
+
+        $queryTranslation
+            ->update('StoreBundle\Entity\Translations', 't')
+            ->set('t.translation', '?2')
+            ->where('t.keywordId = ' . $kId)
+            ->andWhere("t.langCode = '$sysLang'")
+            ->setParameter(2, $kTrans);
+
+        $updateTranslations = $queryTranslation->getQuery();
+
+        $translationUpdateResult = $updateTranslations->getResult();
+
+        echo $translationUpdateResult;
+        
         die;
     }
 
