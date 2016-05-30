@@ -79,3 +79,7 @@ add_keyword:
 add_translate:
     path: /admin/cpanel/addtranslate
     defaults: { _controller: StoreBundle:Admin:addTranslations }
+
+single_row_update:
+    path: /admin/cpanel/singlerowupdate
+    defaults: { _controller: StoreBundle:Admin:singleRowSave }

@@ -249,4 +249,35 @@ class AdminController extends Controller
 
     }
 
+    public function singleRowSaveAction(Request $request) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $id = $request->get('id');
+
+        $keywordVal = $request->get('kVal');
+
+        $kTrans =$request->get('kTrans');
+
+        $pageId = $request->get('pageId');
+
+        $sysLang = $request->get('sysLang');
+
+        $query = $em->createQueryBuilder();
+
+        $query
+            ->update('StoreBundle\Entity\Keywords', 'k')
+            ->set('k.keywordVal', '?1')
+            ->where('k.keywordId = ' . $id)
+            ->andWhere('k.pageId = ' . $pageId)
+            ->setParameter(1, $keywordVal);
+
+        $updateKeywords = $query->getQuery();
+
+        $keywordUpdateResult = $updateKeywords->getResult();
+
+        echo $keywordUpdateResult;
+        die;
+    }
+
 }

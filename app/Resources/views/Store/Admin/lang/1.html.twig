@@ -12,12 +12,12 @@
         {% for translation in translations %}
             <tr>
                 <td>
-            <textarea class="form-control" rows="2" id="keywordVal" data-id="{{ translation.keywordId }}"
+            <textarea class="form-control keywordVal-{{ translation.keywordId }}" rows="2"
                       style="width: 100%">{{ translation.keywordVal }}</textarea>
 
                 </td>
                 <td>
-            <textarea class="form-control" rows="2" id="translation" data-id="{{ translation.keywordId }}"
+            <textarea class="form-control translation-{{ translation.keywordId }}" rows="2"
                       style="width: 100%">{{ translation.translation }}</textarea>
                 </td>
                 <td class="text-center">
@@ -122,10 +122,61 @@
     </div>
     <script>
 
+
+
+        function switchLang(btn) {
+
+            var pageId = '1';
+            var langCode = btn.id;
+
+            $.ajax({
+                url: '{{ path('get_transl_by_page') }}',
+                method: 'POST',
+                data: {
+                    'pageId': pageId,
+                    'langCode': langCode
+                },
+                success: function (data) {
+                    var route = "{{ path('show_translations', {'id': "ID"}) }}";
+                    var routeId = route.replace('ID', pageId);
+                    $("#loadTbl").load(routeId, {'data': data});
+                }
+            });
+
+            window.lang = btn.id;
+        }
+
+
+
         function singleRowSave(btn) {
+            var sysLang = '';
+
+            if (!window.lang) {
+                sysLang = 'en';
+            } else {
+                sysLang = window.lang;
+            }
+
             var id = btn.id;
-            var k = $("#keywordVal").data('id', id).val();
-            console.log(id + ', ' + k);
+            var kVal = $(".keywordVal-"+id).val();
+            var kTrans = $(".translation-"+id).val();
+            var pageId = '1';
+
+            $.ajax({
+                url: '{{ path('single_row_update') }}',
+                method: 'POST',
+                data: {
+                    id,
+                    kVal,
+                    kTrans,
+                    pageId,
+                    sysLang
+                },
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+
         }
 
         function saveKeyword() {
@@ -165,26 +216,7 @@
 
         }
 
-        function switchLang(btn) {
-            console.log(btn.id);
 
-            var pageId = '1';
-            var langCode = btn.id;
-
-            $.ajax({
-                url: '{{ path('get_transl_by_page') }}',
-                method: 'POST',
-                data: {
-                    'pageId': pageId,
-                    'langCode': langCode
-                },
-                success: function (data) {
-                    var route = "{{ path('show_translations', {'id': "ID"}) }}";
-                    var routeId = route.replace('ID', pageId);
-                    $("#loadTbl").load(routeId, {'data': data});
-                }
-            });
-        }
 
         $('.dropdown-menu').find('#' + btn.id).addClass("default-lang");
     </script>
