@@ -34,30 +34,30 @@
         {% block topHeaderRow %}
         <div class="header-top row">
 
-            <div class="col-lg-1 stores">
+            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs stores">
                 <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
                         id="loginBtn"  onclick="window.location='{{ path('store_stores_loc') }}'">
                     {{ stores }}
                 </button>
             </div>
 
-            <div class="col-lg-1 contact">
+            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs contact">
                 <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
                         id="loginBtn" onclick="btnNav('contact')">
                     {{ contact_us }}
                 </button>
             </div>
 
-            <div class="col-lg-1 wishlist">
+            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs wishlist">
                 <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
                         id="loginBtn" onclick="btnNav('wishlist')">
                     {{ wishlist }}
                 </button>
             </div>
 
-            <div class="col-lg-6"></div>
+            <div class="col-lg-6 col-md-6 hidden-sm hidden-xs"></div>
 
-            <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2 lang">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 lang">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
                             id="lang"
@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 currency">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 currency">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button" id="currency"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,11 +84,27 @@
                 </div>
             </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-2  hidden-xs login">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 hidden-xs login">
                 <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
                         id="loginBtn" location="login" onclick="btnNav('login')">
                     {{ login }}
                 </button>
+            </div>
+
+            <div class="hidden-lg hidden-md col-sm-7 col-xs-7"></div>
+            <div class="hidden-lg hidden-md col-sm-2 col-xs-2 dropdown-rigth">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
+                            id="lang"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>Press here
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li id="stores"><a href="">{{ stores }}</a></li>
+                        <li id="contact"><a href="">{{ contact_us }}</a></li>
+                        <li id="wishlist"><a href=""> {{ wishlist }}</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         {% endblock %}
@@ -98,7 +114,7 @@
                     <img src="{{ asset('img/logo_white_plus.png') }}">
                 </div>
 
-                <div class="col-lg-7 col-md-6 hidden-sm hidden-xs search-block">
+                <div class="col-lg-8 col-md-8 hidden-sm hidden-xs search-block">
                     <div class="input-group">
                         <input type="text" class="form-control"
                                aria-label="Text input with segmented button dropdown">
@@ -123,8 +139,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-1"></div>
-                <div class="col-lg-1"></div>
+                <div class="col-lg-1 col-md-1 hidden-sm hidden-xs"></div>
                 <div class="col-lg-1 col-md-2 hidden-sm hidden-xs cart">
                     <button type="button" class="btn btn-primary shopping-cart" onclick="window.location='{{ path('cart') }}'">
                         <span class="badge cart-items">0</span>
