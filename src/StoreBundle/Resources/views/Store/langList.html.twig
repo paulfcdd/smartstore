@@ -1,0 +1,3 @@
+{% for lang in langs %}
+    <li id="{{ lang.langCode }}" onclick="changeLang(this)"><a href="" data-value="{{ lang.langCode }}">{{ lang.langName }}</a></li>
+{% endfor %}

@@ -9,5 +9,6 @@ return array(
     'cart'=> 'Koszyk',
     'stores' => 'Sklepy',
     'notice_js_disabled' => 'Uwaga!',
-    'js_disabled' => 'JavaScript jest wyłączony. Proszę włączyć JavaScript dla poprawnego działania strony'
+    'js_disabled' => 'JavaScript jest wyłączony. Proszę włączyć JavaScript dla poprawnego działania strony',
+    'links' => 'Links'
 );

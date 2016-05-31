@@ -52,10 +52,22 @@ class MainController extends Controller
 
         $currencies = $currencyRepo->findAll();
 
-        $test = 'test';
         return $this->render(
             'StoreBundle:Store:currencyList.html.twig',
             array('currencies' => $currencies)
+        );
+    }
+
+    public function getLangListAction() {
+        $langRepo = $this->getDoctrine()->getRepository('StoreBundle:Lang');
+
+        $langs = $langRepo->findAll();
+
+        return $this->render(
+            'StoreBundle:Store:langList.html.twig',
+            array(
+                'langs' => $langs
+            )
         );
     }
 }
