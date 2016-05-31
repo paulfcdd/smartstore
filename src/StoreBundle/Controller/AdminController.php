@@ -340,7 +340,7 @@ class AdminController extends Controller
         $translationUpdateResult = $updateTranslations->getResult();
 
         echo $translationUpdateResult;
-        
+
         die;
     }
 
