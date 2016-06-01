@@ -41,14 +41,12 @@
                 </a>
 
                 <ul id="firstLink" class="collapse">
-                    <li id="language" onclick="loadTemplate(this.id)"><a href="#"><span
-                                    class="glyphicon glyphicon-menu-right"></span>&nbsp;Languages</a></li>
-                    <li id="currency" onclick="loadTemplate(this.id)"><a href="#"><span
+                    <li id="lang" onclick="loadTemplate(this)"><a href="#"><span
+                                    class="glyphicon glyphicon-menu-right"></span>&nbsp;Translations</a></li>
+                    <li id="currency" onclick="loadTemplate(this)"><a href="#"><span
                                     class="glyphicon glyphicon-menu-right"></span>&nbsp;Currency</a></li>
-                    <li id="locale" onclick="loadTemplate(this.id)"><a href="#"><span
+                    <li id="locale" onclick="loadTemplate(this)"><a href="#"><span
                                     class="glyphicon glyphicon-menu-right"></span>&nbsp;Locale</a></li>
-                    <li id="locale" onclick="loadTemplate(this.id)"><a href="#"><span
-                                    class="glyphicon glyphicon-menu-right"></span>&nbsp;Test</a></li>
                 </ul>
 
             </li>
@@ -110,7 +108,9 @@
 <script>
 
 
-    function loadTemplate(id) {
+    function loadTemplate(btn) {
+
+        var id = btn.id;
 
         switch (id) {
             case 'currency':
@@ -121,9 +121,8 @@
                     }
                 });
                 break;
-            case 'language':
+            case 'lang':
                 window.location.hash = id;
-                console.log(id);
                 $('#load').load("{{ path('lang') }}", function (response, status, xhr) {
                     if (status == 'error') {
                         $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
@@ -131,6 +130,12 @@
                 });
                 break;
             case 'locale':
+                window.location.hash = id;
+                $('#load').load("{{ path('locale') }}", function (response, status, xhr) {
+                    if (status == 'error') {
+                        $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+                    }
+                });
                 break;
 
         }

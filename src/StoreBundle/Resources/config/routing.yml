@@ -51,6 +51,10 @@ lang:
     path: /admin/cpanel/lang
     defaults: { _controller: StoreBundle:Admin:settingsLang }
 
+locale:
+    path: /admin/cpanel/locale
+    defaults: { _controller: StoreBundle:Admin:settingsLocale }
+
 add_new_currency:
     path: /admin/cpanel/addnewcurrency
     defaults: { _controller: StoreBundle:Admin:addNewCurrency }
@@ -87,3 +91,7 @@ single_row_update:
 save_all:
     path: /admin/cpanel/saveall
     defaults: { _controller: StoreBundle:Admin:saveAll }
+
+delete_keyword:
+    path: /admin/cpanel/deletekeyword
+    defaults: { _controller: StoreBundle:Admin:deleteKeyword }

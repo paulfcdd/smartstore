@@ -25,7 +25,7 @@
                       style="width: 100%">{{ translation.translation }}</textarea>
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#removeKeywordConf">
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#removeKeywordConf" id="{{ translation.keywordId }}" onclick="removeConf(this)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </td>
@@ -53,7 +53,8 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="{{ translation.keywordId }}" class="btn btn-warning"> Delete
+                            <button type="button" class="btn btn-warning" id="{{ translation.keywordId }}" onclick="deleteKeyWord(this)">
+                                Delete
                             </button>
                             <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
                         </div>
@@ -128,6 +129,26 @@
 
         $(".single-row-edit").attr('hidden', true);
 
+        function removeConf(btn) {
+            window.id = btn.id;
+        }
+
+        function deleteKeyWord () {
+
+            var removeId = window.id;
+
+            $.ajax({
+                url: '{{ path('delete_keyword') }}',
+                metho: 'POST',
+                data: {
+                    removeId
+                },
+                success: function (data) {
+                    location.reload();
+                }
+            })
+        }
+
         function switchLang(btn) {
 
             var pageId = '1';
@@ -187,8 +208,6 @@
                 myObj.kwId = keywordId;
 
                 var myJson = JSON.stringify(myObj);
-
-//                console.log(myJson);
 
                 $.ajax({
                     url: "{{ path('save_all') }}",

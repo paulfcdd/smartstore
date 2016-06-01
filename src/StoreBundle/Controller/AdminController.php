@@ -28,8 +28,6 @@ class AdminController extends Controller
             'test' => 'This is admin console',
             'js_disabled' => 'JavaScript is disabled. Please, enable JavaScript on your browser for correct work with system'
         ));
-//        var_dump($user = $this->get('security.token_storage')->getToken()->getUser());
-//        die;
     }
 
     public function settingsCurrencyAction()
@@ -52,6 +50,7 @@ class AdminController extends Controller
             'name' => 'test'
         ));
     }
+
 
     public function addNewCurrencyAction(Request $request)
     {
@@ -135,7 +134,7 @@ class AdminController extends Controller
         $langs = $langRepo->findAll();
 
         return $this->render('StoreBundle:Admin:lang.html.twig', array(
-            'title' => 'Languages',
+            'title' => 'Translations',
             'pages' => $pages,
             'langs' => $langs
         ));
@@ -296,7 +295,8 @@ class AdminController extends Controller
         die;
     }
 
-    public function saveAllAction (Request $request) {
+    public function saveAllAction(Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $dataArr = $request->get('myJson');
@@ -342,6 +342,48 @@ class AdminController extends Controller
         echo $translationUpdateResult;
 
         die;
+    }
+
+    public function deleteKeywordAction(Request $request)
+    {
+
+        $removeId = $request->get('removeId');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $keywords = $em->getRepository('StoreBundle:Keywords')->findOneBy(array('keywordId' => $removeId));
+
+        try {
+            if ($keywords != null) {
+                $em->remove($keywords);
+
+                $query = $em->createQueryBuilder();
+                $query
+                    ->delete('StoreBundle\Entity\Translations', 't')
+                    ->where('t.keywordId = :id')
+                    ->setParameter('id', $removeId);
+
+                $deleteQuery = $query->getQuery();
+
+                $delete = $deleteQuery->getResult();
+
+                $em->flush();
+
+            }
+            return new Response('true');
+
+        } catch (\Exception $e) {
+            return new Response($e);
+        }
+
+    }
+
+    public function settingsLocaleAction ()
+    {
+
+        return $this->render('StoreBundle:Admin:locale.html.twig', array(
+            'title' => 'Locale'
+        ));
     }
 
 }
