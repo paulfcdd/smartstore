@@ -2,238 +2,239 @@
 <html lang="en">
 
 {% block head %}
-<head>
-    <meta charset="UTF-8">
-    {% block title %}
-        <title>Smartstore</title>
-    {% endblock %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block styles %}
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
-    {% endblock %}
-</head>
+    <head>
+        <meta charset="UTF-8">
+        {% block title %}
+            <title>Smartstore</title>
+        {% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block styles %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
+        {% endblock %}
+    </head>
 {% endblock %}
 
 {% block body %}
-<body>
-{% block wrapper %}
-<div class="wrapper">
+    <body>
+    {% block wrapper %}
+        <div class="wrapper">
 
-    {% block noscript %}
-        <noscript>
-            <div class="alert alert-warning">
-                <strong>{{ notice_js_disabled }}&nbsp;</strong>{{ js_disabled }}
-            </div>
-        </noscript>
-    {% endblock %}
+            {% block noscript %}
+                <noscript>
+                    <div class="alert alert-warning">
+                        <strong>{{ notice_js_disabled }}&nbsp;</strong>{{ js_disabled }}
+                    </div>
+                </noscript>
+            {% endblock %}
 
-    {% block header %}
-    <div class="header container-fluid">
-        {% block topHeaderRow %}
-        <div class="header-top row">
+            {% block header %}
+                <div class="header container-fluid">
+                    {% block topHeaderRow %}
+                        <div class="header-top row">
 
-            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs stores">
-                <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                        id="loginBtn"  onclick="window.location='{{ path('store_stores_loc') }}'">
-                    {{ stores }}
-                </button>
-            </div>
+                            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs stores">
+                                <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
+                                        id="loginBtn" onclick="window.location='{{ path('store_stores_loc') }}'">
+                                    {{ stores }}
+                                </button>
+                            </div>
 
-            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs contact">
-                <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                        id="loginBtn" onclick="btnNav('contact')">
-                    {{ contact_us }}
-                </button>
-            </div>
+                            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs contact">
+                                <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
+                                        id="loginBtn" onclick="btnNav('contact')">
+                                    {{ contact_us }}
+                                </button>
+                            </div>
 
-            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs wishlist">
-                <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                        id="loginBtn" onclick="btnNav('wishlist')">
-                    {{ wishlist }}
-                </button>
-            </div>
+                            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs wishlist">
+                                <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
+                                        id="loginBtn" onclick="btnNav('wishlist')">
+                                    {{ wishlist }}
+                                </button>
+                            </div>
 
-            <div class="col-lg-6 col-md-6 hidden-sm hidden-xs"></div>
+                            <div class="col-lg-6 col-md-6 hidden-sm hidden-xs"></div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 lang">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                            id="lang"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        {{ render (controller('StoreBundle:Main:getLangList')) }}
-                        {#<li id="en" onclick="changeLang(this)"><a href="" data-value="en">English</a></li>#}
-                        {#<li id="pl" onclick="changeLang(this)"><a href="" data-value="pl">Polski</a></li>#}
-                        {#<li id="ru" onclick="changeLang(this)"><a href="" data-value="ru">Русский</a></li>#}
-                    </ul>
-                </div>
-            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 lang">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
+                                            id="lang"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        {{ render (controller('StoreBundle:Main:getLangList')) }}
+                                    </ul>
+                                </div>
+                            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 currency">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button" id="currency"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="currency">
-                        {{ render (controller('StoreBundle:Main:getCurrencyList')) }}
-                    </ul>
-                </div>
-            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 currency">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
+                                            id="currency"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="currency">
+                                        {{ render (controller('StoreBundle:Main:getCurrencyList')) }}
+                                    </ul>
+                                </div>
+                            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 login">
-                <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                        id="loginBtn" location="login" onclick="window.location='{{ path('store_login') }}'">
-                    {{ login }}
-                </button>
-            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 login">
+                                <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
+                                        id="loginBtn" location="login"
+                                        onclick="window.location='{{ path('store_login') }}'">
+                                    {{ login }}
+                                </button>
+                            </div>
 
-            <div class="hidden-lg hidden-md col-sm-7 col-xs-3"></div>
-            <div class="hidden-lg hidden-md col-sm-2 col-xs-2 dropdown-rigth">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
-                            id="lang"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        &nbsp;<span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li id="stores"><a href="">{{ stores }}</a></li>
-                        <li id="contact"><a href="">{{ contact_us }}</a></li>
-                        <li id="wishlist"><a href=""> {{ wishlist }}</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        {% endblock %}
-        {% block midHeaderRow %}
-            <div class="header-mid row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 logo-container">
-                    <img src="{{ asset('img/logo_white_plus.png') }}">
-                </div>
-
-                <div class="col-lg-8 col-md-8 hidden-sm hidden-xs search-block">
-                    <div class="input-group">
-                        <input type="text" class="form-control"
-                               aria-label="Text input with segmented button dropdown">
-
-                        <div class="input-group-btn dropdown">
-                            <button type="button" class="btn btn-primary dropdown-toggle category-btn dropdown-btn"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                {{ all_categories }}&nbsp;<span class="caret"></span> <span
-                                        class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                            <button type="button" class="btn btn-primary search-btn">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
+                            <div class="hidden-lg hidden-md col-sm-7 col-xs-3"></div>
+                            <div class="hidden-lg hidden-md col-sm-2 col-xs-2 dropdown-rigth">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle dropdown-btn" type="button"
+                                            id="lang"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        &nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li id="stores"><a href="">{{ stores }}</a></li>
+                                        <li id="contact"><a href="">{{ contact_us }}</a></li>
+                                        <li id="wishlist"><a href=""> {{ wishlist }}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-1 col-md-1 hidden-sm hidden-xs"></div>
-                <div class="col-lg-1 col-md-2 hidden-sm hidden-xs cart">
-                    <button type="button" class="btn btn-primary shopping-cart" onclick="window.location='{{ path('cart') }}'">
-                        <span class="badge cart-items">0</span>
-                        <span class="glyphicon glyphicon-shopping-cart cartIcon"></span>
-                    </button>
-                </div>
+                    {% endblock %}
+                    {% block midHeaderRow %}
+                        <div class="header-mid row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 logo-container">
+                                <img src="{{ asset('img/logo_white_plus.png') }}">
+                            </div>
 
-                <!--VISIBLE ONLY ON TABLETS AND MOBILES-->
-                <div class="hidden-lg hidden-md col-sm-7 col-xs-6"></div>
-                <div class="hidden-lg hidden-md col-sm-1 sm-xs-col col-xs-1">
-                    <button type="button" class="btn btn-primary icon-button" data-toggle="collapse"
-                            data-target="#collapseMenu" id="menu-toggle">
-                        <span class="glyphicon glyphicon-align-justify smallIcon"></span>
-                    </button>
-                </div>
-                <div class="hidden-lg hidden-md col-sm-1 sm-xs-col col-xs-1">
-                    <button type="button" class="btn btn-primary icon-button">
-                        <span class="glyphicon glyphicon-search smallIcon"></span>
-                    </button>
-                </div>
-                <div class="hidden-lg hidden-md col-sm-1 sm-xs-col col-xs-1">
-                    <button type="button" class="btn btn-primary icon-button">
-                        <span class="glyphicon glyphicon-shopping-cart smallIcon"></span>
-                    </button>
-                </div>
-            </div>
-        {% endblock %}
-        {% block  bottomHEaderRow%}
-            <div class="header-bot row">
-                <nav class="navbar navbar-inverse main-menu hidden-sm hidden-xs">
-                    <div class="container-fluid">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li>
-                            <li><a href="#">Page 3</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        {% endblock %}
-    </div>
-    {% endblock %}
+                            <div class="col-lg-8 col-md-8 hidden-sm hidden-xs search-block">
+                                <div class="input-group">
+                                    <input type="text" class="form-control"
+                                           aria-label="Text input with segmented button dropdown">
 
-    {% block content %}
-        <div class="content">
+                                    <div class="input-group-btn dropdown">
+                                        <button type="button"
+                                                class="btn btn-primary dropdown-toggle category-btn dropdown-btn"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
+                                            {{ all_categories }}&nbsp;<span class="caret"></span> <span
+                                                    class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something else here</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                        </ul>
+                                        <button type="button" class="btn btn-primary search-btn">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-1 hidden-sm hidden-xs"></div>
+                            <div class="col-lg-1 col-md-2 hidden-sm hidden-xs cart">
+                                <button type="button" class="btn btn-primary shopping-cart"
+                                        onclick="window.location='{{ path('cart') }}'">
+                                    <span class="badge cart-items">0</span>
+                                    <span class="glyphicon glyphicon-shopping-cart cartIcon"></span>
+                                </button>
+                            </div>
+
+                            <!--VISIBLE ONLY ON TABLETS AND MOBILES-->
+                            <div class="hidden-lg hidden-md col-sm-7 col-xs-6"></div>
+                            <div class="hidden-lg hidden-md col-sm-1 sm-xs-col col-xs-1">
+                                <button type="button" class="btn btn-primary icon-button" data-toggle="collapse"
+                                        data-target="#collapseMenu" id="menu-toggle">
+                                    <span class="glyphicon glyphicon-align-justify smallIcon"></span>
+                                </button>
+                            </div>
+                            <div class="hidden-lg hidden-md col-sm-1 sm-xs-col col-xs-1">
+                                <button type="button" class="btn btn-primary icon-button">
+                                    <span class="glyphicon glyphicon-search smallIcon"></span>
+                                </button>
+                            </div>
+                            <div class="hidden-lg hidden-md col-sm-1 sm-xs-col col-xs-1">
+                                <button type="button" class="btn btn-primary icon-button">
+                                    <span class="glyphicon glyphicon-shopping-cart smallIcon"></span>
+                                </button>
+                            </div>
+                        </div>
+                    {% endblock %}
+                    {% block  bottomHEaderRow %}
+                        <div class="header-bot row">
+                            <nav class="navbar navbar-inverse main-menu hidden-sm hidden-xs">
+                                <div class="container-fluid">
+                                    <ul class="nav navbar-nav">
+                                        <li class="active"><a href="{{ path('store_homepage') }}">Home</a></li>
+                                        <li><a href="{{ path('category', {'title': 'phones'}) }}">Page 1</a></li>
+                                        <li><a href="#">Page 2</a></li>
+                                        <li><a href="#">Page 3</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block content %}
+                <div class="content">
+
+                </div>
+            {% endblock %}
+
+            {% block footer %}
+                <div class="footer">
+
+                </div>
+            {% endblock %}
 
         </div>
     {% endblock %}
+    {% block sripts %}
+        <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script>
 
-    {% block footer %}
-        <div class="footer">
+            function changeLang(element) {
+                var selectedLang = element.id;
+                $.ajax({
+                    url: "{{ path('store_changeLang') }}",
+                    type: "POST",
+                    data: {
+                        "selectedLang": selectedLang
+                    },
+                    success: function (data) {
+                        location.reload();
+                    }
+                });
+            }
 
-        </div>
+            var curLang = '{{ app.session.get('selectedLang') }}';
+
+            $('.dropdown-menu').find('#' + curLang).addClass("default-lang");
+
+            //        $(document).ready(function () {
+            //            $('.default_cur').parents(".dropdown").find('.btn').html($('.default_cur').text() + ' <span class="caret"></span>');
+            //            $('.default-lang').parents(".dropdown").find('.btn').html($('.default-lang').text() + ' <span class="caret"></span>');
+            //        });
+            //
+            //        $(".dropdown-menu li a").click(function () {
+            //            $(this).parents(".dropdown").find('.dropdown-btn').html($(this).text() + ' <span class="caret"></span>');
+            //            $(this).parents(".dropdown").find('.dropdown-btn').val($(this).data('value'));
+            //        });
+        </script>
+        <script src="{{ asset('js/dropdowns.js') }}"></script>
     {% endblock %}
-
-</div>
-{% endblock %}
-{% block sripts %}
-    <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script>
-
-        function changeLang(element) {
-            var selectedLang = element.id;
-            $.ajax({
-                url: "{{ path('store_changeLang') }}",
-                type: "POST",
-                data: {
-                    "selectedLang": selectedLang
-                },
-                success: function (data) {
-                    location.reload();
-                }
-            });
-        }
-
-        var curLang = '{{ app.session.get('selectedLang') }}';
-
-        $('.dropdown-menu').find('#' + curLang).addClass("default-lang");
-
-//        $(document).ready(function () {
-//            $('.default_cur').parents(".dropdown").find('.btn').html($('.default_cur').text() + ' <span class="caret"></span>');
-//            $('.default-lang').parents(".dropdown").find('.btn').html($('.default-lang').text() + ' <span class="caret"></span>');
-//        });
-//
-//        $(".dropdown-menu li a").click(function () {
-//            $(this).parents(".dropdown").find('.dropdown-btn').html($(this).text() + ' <span class="caret"></span>');
-//            $(this).parents(".dropdown").find('.dropdown-btn').val($(this).data('value'));
-//        });
-    </script>
-    <script src="{{ asset('js/dropdowns.js') }}"></script>
-{% endblock %}
-</body>
+    </body>
 {% endblock %}
 </html>

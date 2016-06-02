@@ -101,12 +101,14 @@
 <!-- /#wrapper -->
 
 <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js"
+        integrity="sha256-55Jz3pBCF8z9jBO1qQ7cIf0L+neuPTD1u7Ytzrp2dqo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
 <script src="{{ asset('js/jq_router.js') }}"></script>
 <script src="{{ asset('js/bootstrap-formhelpers-currencies.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <!-- Menu Toggle Script -->
 <script>
-
 
     function loadTemplate(btn) {
 
@@ -149,7 +151,7 @@
         });
     }
 
-    if (window.location.hash == '#language') {
+    if (window.location.hash == '#lang') {
         $('#load').load("{{ path('lang') }}", function (response, status, xhr) {
             if (status == 'error') {
                 $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');

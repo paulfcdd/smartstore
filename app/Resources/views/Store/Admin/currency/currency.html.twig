@@ -184,6 +184,10 @@
         </tbody>
     </table>
     <script>
+        $('.modal').draggable({
+            handle: ".modal-header"
+        });
+
         function editCurrency(btn) {
             var id = btn.id;
             var editName = $('#curNameEdit').val();

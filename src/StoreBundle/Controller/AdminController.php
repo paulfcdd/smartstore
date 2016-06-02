@@ -37,7 +37,7 @@ class AdminController extends Controller
 
         $currencies = $currencyRepo->findAll();
 
-        return $this->render('StoreBundle:Admin:currency.html.twig', array(
+        return $this->render('Store/Admin/currency/currency.html.twig', array(
             'title' => 'Currencies',
             'currencies' => $currencies
         ));
@@ -45,7 +45,7 @@ class AdminController extends Controller
 
     public function editCurrencyAction()
     {
-        return $this->render('StoreBundle:Admin:editCurrency.html.twig', array(
+        return $this->render('Store/Admin/currency/editCurrency.html.twig', array(
             'title' => 'Edit currency',
             'name' => 'test'
         ));
@@ -133,7 +133,7 @@ class AdminController extends Controller
 
         $langs = $langRepo->findAll();
 
-        return $this->render('StoreBundle:Admin:lang.html.twig', array(
+        return $this->render('Store/Admin/lang/lang.html.twig', array(
             'title' => 'Translations',
             'pages' => $pages,
             'langs' => $langs
@@ -381,7 +381,7 @@ class AdminController extends Controller
     public function settingsLocaleAction ()
     {
 
-        return $this->render('StoreBundle:Admin:locale.html.twig', array(
+        return $this->render('Store/Admin/locale/locale.html.twig', array(
             'title' => 'Locale'
         ));
     }

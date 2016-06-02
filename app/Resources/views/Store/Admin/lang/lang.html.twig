@@ -1,6 +1,6 @@
 <div class="langTpl container-fluid">
     <div class="row top-row">
-        <h3> {{ title }}</h3>
+        <h3> {{ title }}fdfdfd</h3>
     </div>
     <div class="row lang-row">
         {% for page in pages %}
@@ -35,11 +35,17 @@
             </div>
         </div>
     </div>
+
     <div class="row translation-block" id="loadTbl">
 
     </div>
 
     <script>
+
+        $('.modal').draggable({
+            handle: ".modal-header"
+        });
+
         $('.dropdown-menu').find('#en').addClass("default-lang");
 
         function getByPage(btn) {
@@ -61,7 +67,6 @@
                 }
             });
         }
-
 
     </script>
 

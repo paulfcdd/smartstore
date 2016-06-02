@@ -95,3 +95,7 @@ save_all:
 delete_keyword:
     path: /admin/cpanel/deletekeyword
     defaults: { _controller: StoreBundle:Admin:deleteKeyword }
+
+category:
+    path: /{title}
+    defaults: { _controller: StoreBundle:Category:category }
