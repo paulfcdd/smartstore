@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block styles %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}">
+        {% endblock %}
+    {% endblock %}
+
+</head>
+<body>
+<div class="wrapper">
+
+    {% block header %}
+        {{ render(controller('StoreBundle:Header:index')) }}
+    {% endblock %}
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div class="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+
+</div>
+{% block customScripts %}
+    <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script>
+
+        var selectedCat = $('.currentPage').text();
+
+        $("#topMenu ul li#" + selectedCat).addClass('active');
+
+        function changeLang(element) {
+            var selectedLang = element.id;
+            $.ajax({
+                url: "{{ path('store_changeLang') }}",
+                type: "POST",
+                data: {
+                    "selectedLang": selectedLang
+                },
+                success: function (data) {
+                    location.reload();
+                }
+            });
+        }
+
+        var curLang = '{{ app.session.get('selectedLang') }}';
+
+        $('.dropdown-menu').find('#' + curLang).addClass("default-lang");
+    </script>
+    <script src="{{ asset('js/dropdowns.js') }}"></script>
+{% endblock %}
+</body>
+</html>

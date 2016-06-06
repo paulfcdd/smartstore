@@ -1,6 +1,6 @@
 store_homepage:
     path:     /
-    defaults: { _controller: StoreBundle:Main:index }
+    defaults: { _controller: StoreBundle:Index:index }
 
 store_login:
     path: /login

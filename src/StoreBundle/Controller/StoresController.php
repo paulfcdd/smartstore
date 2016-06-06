@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class StoresController extends Controller {
 
     public function storesAction() {
-        return $this->render('Store/Index/stores.html.twig', array (
+        return $this->render('Store/tpl/stores.html.twig', array (
             'test' => 'test'
         ));
     }

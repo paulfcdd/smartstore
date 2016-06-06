@@ -19,9 +19,9 @@ class CategoryController extends Controller
 
         $sysLang = new Session();
 
-        var_dump($sysLang->get('selectedLang'));
+//        var_dump($sysLang->get('selectedLang'));
 
-        return $this->render('Store/Category/category.html.twig', array(
+        return $this->render('Store/tpl/category.html.twig', array(
            'title' => $title
         ));
 

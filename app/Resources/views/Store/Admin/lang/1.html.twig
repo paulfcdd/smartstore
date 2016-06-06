@@ -127,6 +127,8 @@
     </div>
     <script>
 
+        window.lang = 'en';
+
         $(".single-row-edit").attr('hidden', true);
 
         function removeConf(btn) {
@@ -187,13 +189,7 @@
 
                 var pageId = '1';
 
-                var sysLang = '';
-
-                if (!window.lang) {
-                    sysLang = 'en';
-                } else {
-                    sysLang = window.lang;
-                }
+                var sysLang =  window.lang;
 
                 var myObj = new Object();
 
@@ -223,13 +219,7 @@
         }
 
         function singleRowSave(btn) {
-            var sysLang = '';
-
-            if (!window.lang) {
-                sysLang = 'en';
-            } else {
-                sysLang = window.lang;
-            }
+            var sysLang =  window.lang;
 
             var id = btn.id;
             var kVal = $(".keywordVal-" + id).val();

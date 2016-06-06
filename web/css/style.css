@@ -205,10 +205,13 @@ body {
 .wrapper .header .header-mid .contact-button:hover {
   text-decoration: underline;
 }
-.wrapper .header .content {
+.wrapper .header .header-bot #topMenu ul li:hover {
+  background-color: #328bb6;
+}
+.wrapper .content {
   padding-bottom: 90px;
 }
-.wrapper .header .footer {
+.wrapper .footer {
   position: absolute;
   bottom: 0;
   left: 0;

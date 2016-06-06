@@ -1,0 +1,6 @@
+{% extends 'Store/tpl/main.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <p class="currentPage" hidden>home</p>
+    {{ parent() }}
+{% endblock %}
