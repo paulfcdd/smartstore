@@ -51,7 +51,7 @@
 
             </li>
             <li>
-                <a href="" ng-click="test()"><span
+                <a id="categories" onclick="loadTemplate(this)"><span
                             class="glyphicon glyphicon-menu-hamburger"></span>&nbsp;Categories</a>
             </li>
             <li>
@@ -139,7 +139,13 @@
                     }
                 });
                 break;
-
+            case 'categories':
+                window.location.hash = id;
+                $('#load').load("{{ path('categories') }}", function (response, status, xhr) {
+                    if (status == 'error') {
+                        $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+                    }
+                });
         }
     }
 

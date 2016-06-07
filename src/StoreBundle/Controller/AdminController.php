@@ -13,6 +13,7 @@ use StoreBundle\Entity\Keywords;
 use StoreBundle\Entity\Lang;
 use StoreBundle\Entity\Pages;
 use StoreBundle\Entity\Translations;
+use StoreBundle\Entity\Categories;
 
 
 class AdminController extends Controller
@@ -383,6 +384,25 @@ class AdminController extends Controller
 
         return $this->render('Store/Admin/locale/locale.html.twig', array(
             'title' => 'Locale'
+        ));
+    }
+
+    public function settingsCategoriesAction() {
+
+        $categoryRepo = $this->getDoctrine()->getRepository('StoreBundle:Categories');
+
+        $categoryList = $categoryRepo->findAll();
+
+        $langRepo = $this->getDoctrine()->getRepository('StoreBundle:Lang');
+
+        $langs = $langRepo->findAll();
+
+        var_dump($categoryList);
+
+        return $this->render('Store/Admin/categories/categories.html.twig', array(
+            'title' => 'Categories',
+            'categories' => $categoryList,
+            'langs' => $langs
         ));
     }
 

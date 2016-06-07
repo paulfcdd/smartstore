@@ -55,6 +55,10 @@ locale:
     path: /admin/cpanel/locale
     defaults: { _controller: StoreBundle:Admin:settingsLocale }
 
+categories:
+    path: /admin/cpanel/categories
+    defaults: { _controller: StoreBundle:Admin:settingsCategories }
+
 add_new_currency:
     path: /admin/cpanel/addnewcurrency
     defaults: { _controller: StoreBundle:Admin:addNewCurrency }
