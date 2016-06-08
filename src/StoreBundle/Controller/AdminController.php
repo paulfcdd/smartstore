@@ -397,7 +397,7 @@ class AdminController extends Controller
 
         $langs = $langRepo->findAll();
 
-        var_dump($categoryList);
+        $translationsRepo = $this->getDoctrine()->getRepository('StoreBundle:CTranslations');
 
         return $this->render('Store/Admin/categories/categories.html.twig', array(
             'title' => 'Categories',

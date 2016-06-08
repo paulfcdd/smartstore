@@ -3,7 +3,6 @@
         <strong>{{ notice_js_disabled }}&nbsp;</strong>{{ js_disabled }}
     </div>
 </noscript>
-
 <div class="header container-fluid">
     <div class="header-top row">
 
@@ -139,17 +138,36 @@
             </button>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            sessionLang = {{ app.session.get('selectedLang') }};
+            currentLang = sessionLang.id;
+            console.log(currentLang);
 
+            $.ajax({
+                url: '{{ path('header_render_categories') }}',
+                method: 'GET',
+                data: {
+                    currentLang
+                },
+                success: function(data) {
+//                    console.log(data);
+                }
+            });
+        });
+    </script>
     <div class="header-bot row">
         <nav class="navbar navbar-inverse main-menu hidden-sm hidden-xs">
             <div id="topMenu" class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li id="home"><a href="{{ path('store_homepage') }}">Home</a></li>
-                    <li id="phones"><a href="{{ path('category', {'title': 'phones'}) }}">Phones</a></li>
-                    <li id="tablets"><a href="{{ path('category', {'title': 'tablets'}) }}">Tablets</a></li>
-                    <li id="laptops"><a href="{{ path('category', {'title': 'laptops'}) }}">Laptops</a></li>
+                    {#{{ render (controller('StoreBundle:Main:renderCategoryList')) }}#}
+                    {#<li id="phones"><a href="{{ path('category', {'title': 'phones'}) }}">Phones</a></li>#}
+                    {#<li id="tablets"><a href="{{ path('category', {'title': 'tablets'}) }}">Tablets</a></li>#}
+                    {#<li id="laptops"><a href="{{ path('category', {'title': 'laptops'}) }}">Laptops</a></li>#}
                 </ul>
             </div>
         </nav>
     </div>
 </div>
+

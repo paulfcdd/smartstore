@@ -73,11 +73,11 @@ update_currency:
 
 
 get_transl_by_page:
-    path: admin/cpanel/langbypage
+    path: /admin/cpanel/langbypage
     defaults: { _controller: StoreBundle:Admin:getTranslateByPage }
 
 show_translations:
-    path: admin/cpanel/translations/{id}
+    path: /admin/cpanel/translations/{id}
     defaults: { _controller: StoreBundle:Admin:showTranslations }
 
 add_keyword:
@@ -103,3 +103,7 @@ delete_keyword:
 category:
     path: /{title}
     defaults: { _controller: StoreBundle:Category:category }
+
+header_render_categories:
+    path: /rendercategories
+    defaults: { _controller: StoreBundle:Header:renderCategoryList}

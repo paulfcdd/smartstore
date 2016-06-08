@@ -6,6 +6,8 @@
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
         {% block styles %}
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
             <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
@@ -33,10 +35,7 @@
 
 </div>
 {% block customScripts %}
-    <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script>
-
         var selectedCat = $('.currentPage').text();
 
         $("#topMenu ul li#" + selectedCat).addClass('active');

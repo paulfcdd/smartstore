@@ -5,3 +5,11 @@ http://www.htmlgoodies.com/beyond/css/working_w_tables_using_jquery.html
 https://www.sitepoint.com/premium/dashboard#panel-recommended
 
 http://newsmartwave.net/magento/porto/index.php/demo4_en/
+
+SELECT c.c_keyword, ct.translation
+FROM categories c
+INNER JOIN c_translations ct
+ON c.c_id = ct.c_id
+INNER JOIN lang l
+ON l.lang_code = ct.lang_code
+WHERE l.lang_code = 'en'

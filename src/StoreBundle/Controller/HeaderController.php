@@ -69,4 +69,34 @@ class HeaderController extends Controller
 
         }
     }
+
+    public function renderCategoryListAction(Request $request) {
+
+        $langCode = $request->get('currentLang');
+
+        var_dump($langCode);
+
+        die;
+//        $em = $this->getDoctrine()->getManager();
+//        $get = $em->createQueryBuilder();
+//
+//        $get
+//            ->select('c.cKeyword', 'ct.translation')
+//            ->from('StoreBundle\Entity\Categories', 'c')
+//            ->innerJoin('StoreBundle\Entity\CTranslations', 'ct', 'WITH', 'c.cId = ct.cId')
+//            ->innerJoin('StoreBundle\Entity\Lang', 'l', 'WITH', "l.langCode = '$langCode'");
+//
+//        $query = $get->getQuery();
+//
+//        $categories = $query->getResult();
+//
+//        var_dump( new JsonResponse($categories) );
+//
+//        return $this->render(
+//            'StoreBundle:Store:categoryList.html.twig',
+//            array(
+//                'langCode' => $langCode
+//            )
+//        );
+    }
 }
