@@ -165,6 +165,14 @@
         });
     }
 
+    if (window.location.hash == '#categories') {
+        $('#load').load("{{ path('categories') }}", function (response, status, xhr) {
+            if (status == 'error') {
+                $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
+            }
+        });
+    }
+
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

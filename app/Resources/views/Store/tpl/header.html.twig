@@ -89,7 +89,7 @@
                 <input type="text" class="form-control"
                        aria-label="Text input with segmented button dropdown">
 
-                <div class="input-group-btn dropdown">
+                <div class="input-group-btn dropdown searchMenu">
                     <button type="button"
                             class="btn btn-primary dropdown-toggle category-btn dropdown-btn"
                             data-toggle="dropdown"
@@ -97,12 +97,12 @@
                         {{ all_categories }}&nbsp;<span class="caret"></span> <span
                                 class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                    <ul class="dropdown-menu dropdown-menu-right dropdownList">
+                        {#<li id="kek"><a href="#">Action</a></li>#}
+                        {#<li><a href="#">Another action</a></li>#}
+                        {#<li><a href="#">Something else here</a></li>#}
+                        {#<li role="separator" class="divider"></li>#}
+                        {#<li><a href="#">Separated link</a></li>#}
                     </ul>
                     <button type="button" class="btn btn-primary search-btn">
                         <span class="glyphicon glyphicon-search"></span>
@@ -138,34 +138,36 @@
             </button>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            sessionLang = {{ app.session.get('selectedLang') }};
-            currentLang = sessionLang.id;
-            console.log(currentLang);
-
-            $.ajax({
-                url: '{{ path('render_category') }}',
-                method: 'GET',
-                data: {
-                    currentLang
-                },
-                success: function (data) {
-                    $('.top-menu').html(data);
-//                    document.getElementsByClassName('top-menu').innerHTML(data);
-//                    console.log(data);
-                }
-            });
-        });
-    </script>
     <div class="header-bot row">
         <nav class="navbar navbar-inverse main-menu hidden-sm hidden-xs">
             <div id="topMenu" class="container-fluid">
-                <ul class="nav navbar-nav top-menu">
+                <ul class="nav navbar-nav dropdownList">
                     {#<li id="home"><a href="{{ path('store_homepage') }}">Home</a></li>#}
                 </ul>
             </div>
         </nav>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        sessionLang = {{ app.session.get('selectedLang') }};
+        currentLang = sessionLang.id;
+
+        $.ajax({
+            url: '{{ path('render_category') }}',
+            method: 'GET',
+            data: {
+                currentLang
+            },
+            success: function (data) {
+                $('.dropdownList').html(data);
+                var selectedCat = $('.currentPage').text();
+                console.log(selectedCat);
+                $("#topMenu ul li#" + selectedCat).addClass('active');
+
+                $('.searchMenu ul li a').attr('href', '#');
+            }
+        });
+    });
+</script>
 
