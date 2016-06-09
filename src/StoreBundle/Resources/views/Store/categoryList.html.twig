@@ -1,1 +1,4 @@
-{{ langCode }}
+{#jeje#}
+{% for category in categories %}
+    <li id="{{ category.cKeyword }}"><a href="{{ path('category', {'title': category.cKeyword }) }}">{{ category.translation }}</a></li>
+{% endfor %}

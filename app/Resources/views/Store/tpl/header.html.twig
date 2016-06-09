@@ -145,12 +145,14 @@
             console.log(currentLang);
 
             $.ajax({
-                url: '{{ path('header_render_categories') }}',
+                url: '{{ path('render_category') }}',
                 method: 'GET',
                 data: {
                     currentLang
                 },
-                success: function(data) {
+                success: function (data) {
+                    $('.top-menu').html(data);
+//                    document.getElementsByClassName('top-menu').innerHTML(data);
 //                    console.log(data);
                 }
             });
@@ -159,12 +161,8 @@
     <div class="header-bot row">
         <nav class="navbar navbar-inverse main-menu hidden-sm hidden-xs">
             <div id="topMenu" class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li id="home"><a href="{{ path('store_homepage') }}">Home</a></li>
-                    {#{{ render (controller('StoreBundle:Main:renderCategoryList')) }}#}
-                    {#<li id="phones"><a href="{{ path('category', {'title': 'phones'}) }}">Phones</a></li>#}
-                    {#<li id="tablets"><a href="{{ path('category', {'title': 'tablets'}) }}">Tablets</a></li>#}
-                    {#<li id="laptops"><a href="{{ path('category', {'title': 'laptops'}) }}">Laptops</a></li>#}
+                <ul class="nav navbar-nav top-menu">
+                    {#<li id="home"><a href="{{ path('store_homepage') }}">Home</a></li>#}
                 </ul>
             </div>
         </nav>

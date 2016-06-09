@@ -104,6 +104,6 @@ category:
     path: /{title}
     defaults: { _controller: StoreBundle:Category:category }
 
-header_render_categories:
-    path: /rendercategories
-    defaults: { _controller: StoreBundle:Header:renderCategoryList}
+render_category:
+    path: /service/renderCaregory
+    defaults: { _controller: StoreBundle:Category:renderCategoryList }
