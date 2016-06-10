@@ -24,7 +24,7 @@ class AdminController extends Controller
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('Store/Admin/cpanel.html.twig', array(
+        return $this->render('Store/Admin/dashboard.html.twig', array(
             'name' => $user->getUsername(),
             'test' => 'This is admin console',
             'js_disabled' => 'JavaScript is disabled. Please, enable JavaScript on your browser for correct work with system'

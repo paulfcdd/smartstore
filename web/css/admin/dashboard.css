@@ -1,0 +1,105 @@
+#wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#wrapper .divider {
+  background-color: whitesmoke;
+}
+#wrapper.toggled {
+  padding-left: 250px;
+  width: 97%;
+  float: right;
+}
+#wrapper.toggled .test {
+  visibility: hidden;
+}
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #515151;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#sidebar-wrapper .dashboard-logo {
+  text-align: left;
+  padding-left: 15px;
+  position: relative;
+  top: -10px;
+}
+#sidebar-wrapper .dashboard-logo:hover {
+  cursor: pointer;
+}
+#sidebar-wrapper a {
+  color: #ffffff;
+}
+#sidebar-wrapper a:hover {
+  background-color: #2E2E2E;
+}
+#sidebar-wrapper a:active {
+  background-color: #2E2E2E;
+}
+#sidebar-wrapper a:focus {
+  background-color: #2E2E2E;
+}
+#sidebar-wrapper li {
+  list-style-type: none;
+}
+#sidebar-wrapper #nontoggle {
+  cursor: pointer;
+}
+#sidebar-wrapper #nontoggle .collapse li a {
+  text-decoration: none;
+  background-color: transparent;
+  margin: 20px 0;
+}
+#sidebar-wrapper #nontoggle .collapse li:hover {
+  background-color: transparent;
+}
+#wrapper.toggled #sidebar-wrapper {
+  width: 3%;
+}
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  min-height: 90rem;
+}
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  width: 100%;
+  float: right;
+}
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 250px;
+  }
+  #wrapper.toggled {
+    padding-left: 0;
+  }
+  #sidebar-wrapper {
+    width: 250px;
+  }
+  #wrapper.toggled #sidebar-wrapper .dashboard-logo {
+    visibility: hidden;
+  }
+  #wrapper.toggled #sidebar-wrapper #nontoggle {
+    visibility: hidden;
+  }
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}

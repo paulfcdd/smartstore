@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: paulfcdd
- * Date: 07.06.2016
- * Time: 14:13
+ * Date: 10.06.2016
+ * Time: 09:45
  */
 
 namespace StoreBundle\Entity;
@@ -11,20 +11,19 @@ namespace StoreBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * StoreBundle\Entity\CTranslations
+ * StoreBundle\Entity\SCTranslations
  *
  * @ORM\Entity
- * @ORM\Table(name="c_translations")
+ * @ORM\Table(name="sc_translations")
  */
-class CTranslations
+class SCTranslations
 {
-
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      */
 
-    private $cId;
+    private $scId;
 
     /**
      * @ORM\Column(type="string", length=2)
@@ -39,27 +38,27 @@ class CTranslations
 
 
     /**
-     * Set cId
+     * Set scId
      *
-     * @param integer $cId
+     * @param integer $scId
      *
-     * @return CTranslations
+     * @return SCTranslations
      */
-    public function setCId($cId)
+    public function setScId($scId)
     {
-        $this->cId = $cId;
+        $this->scId = $scId;
 
         return $this;
     }
 
     /**
-     * Get cId
+     * Get scId
      *
      * @return integer
      */
-    public function getCId()
+    public function getScId()
     {
-        return $this->cId;
+        return $this->scId;
     }
 
     /**
@@ -67,7 +66,7 @@ class CTranslations
      *
      * @param string $langCode
      *
-     * @return CTranslations
+     * @return SCTranslations
      */
     public function setLangCode($langCode)
     {
@@ -91,7 +90,7 @@ class CTranslations
      *
      * @param string $translation
      *
-     * @return CTranslations
+     * @return SCTranslations
      */
     public function setTranslation($translation)
     {
