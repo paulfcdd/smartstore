@@ -1,4 +1,31 @@
-{#jeje#}
 {% for category in categories %}
-    <li id="{{ category.cKeyword }}"><a href="{{ path('category', {'title': category.cKeyword }) }}">{{ category.translation }}</a></li>
+    <li id="{{ category.cKeyword }}" class="dropdown">
+        <a href="{{ path('category', {'title': category.cKeyword }) }}">
+            {{ category.translation }}
+        </a>
+        <ul class="dropdown-menu">
+            {% for subcategory in subcategories %}
+                {% if category.cId == subcategory.parentId %}
+
+                    <li><a href="#" style="color: black">{{ subcategory.cKeyword }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </li>
+
+
+    {#<li class="dropdown" id="{{ category.cKeyword }}">#}
+    {#<a href="{{ path('category', {'title': category.cKeyword }) }}"#}
+    {#class="dropdown-toggle" data-toggle="dropdown">{{ category.translation }} <span class="caret"></span></a>#}
+    {#<ul class="dropdown-menu">#}
+    {#{% for subcategory in subcategories %}#}
+    {#{% if category.cId == subcategory.parentId %}#}
+    {#<li><a href="#" style="color: black">{{ subcategory.cKeyword }}</a></li>#}
+    {#{% endif %}#}
+    {#{% endfor %}#}
+    {#</ul>#}
+
+    {#</li>#}
+
+
 {% endfor %}

@@ -20,8 +20,6 @@ class CategoryController extends Controller
 
         $sysLang = new Session();
 
-//        var_dump($sysLang->get('selectedLang'));
-
         return $this->render('Store/tpl/category.html.twig', array(
             'title' => $title
         ));
@@ -35,20 +33,33 @@ class CategoryController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $get = $em->createQueryBuilder();
+        $getCategories = $em->createQueryBuilder();
 
-        $get
-            ->select('c.cKeyword', 'ct.translation')
+        $getCategories
+            ->select('c.cKeyword', 'ct.translation', 'c.cId')
             ->from('StoreBundle\Entity\Categories', 'c')
             ->innerJoin('StoreBundle\Entity\CTranslations', 'ct', 'WITH', 'c.cId = ct.cId')
             ->where("ct.langCode = '$currentLang'");
 
-        $query = $get->getQuery();
+        $query = $getCategories->getQuery();
 
         $categories = $query->getResult();
 
+        $getSubcategories = $em->createQueryBuilder();
+
+        $getSubcategories
+            ->select('s.cKeyword', 's.parentId')
+            ->from('StoreBundle\Entity\Categories', 'c')
+            ->from('StoreBundle\Entity\Subcategories', 's')
+            ->where('c.cId = s.parentId');
+
+        $q = $getSubcategories->getQuery();
+
+        $subcategories = $q->getResult();
+
         return $this->render('StoreBundle:Store:categoryList.html.twig', array(
-            'categories' => $categories
+            'categories' => $categories,
+            'subcategories' => $subcategories
         ));
     }
 }

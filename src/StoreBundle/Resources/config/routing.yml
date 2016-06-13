@@ -1,44 +1,49 @@
 store_homepage:
-    path:     /
+    path: /
     defaults: { _controller: StoreBundle:Index:index }
 
 store_login:
     path: /login
     defaults: { _controller: StoreBundle:Security:login }
 
-store_changeLang:
-    path: /changelang
-    defaults: { _controller: StoreBundle:Main:changeLang }
-
-store_stores_loc:
-    path: /stores
-    defaults: { _controller: StoreBundle:Stores:stores }
+user_registration:
+    path: /register
+    defaults: { _controller: StoreBundle:Registration:register }
 
 cart:
     path: /cart
     defaults: { _controller: StoreBundle:Cart:cart }
 
+store_stores_loc:
+    path: /stores
+    defaults: { _controller: StoreBundle:Stores:stores }
+
+store_user:
+    path: /user/{id}
+    defaults: { _controller: StoreBundle:User:index }
+
+category:
+    path: /{title}
+    defaults: { _controller: StoreBundle:Category:category }
+
 admin_login:
     path: /admin
     defaults: { _controller: StoreBundle:Security:adminLogin }
+
+user_logout:
+    path: /logout
+
+store_changeLang:
+    path: /changelang
+    defaults: { _controller: StoreBundle:Main:changeLang }
 
 admin_control_panel:
     path: /admin/cpanel
     defaults: { _controller: StoreBundle:Admin:cpanel}
 
-user_registration:
-    path:     /register
-    defaults: { _controller: StoreBundle:Registration:register }
-
 admin_registration:
     path: /regadmin
     defaults: { _controller: StoreBundle:Registration:regAdmin }
-store_user:
-    path: /user
-    defaults: { _controller: StoreBundle:User:index }
-
-user_logout:
-    path: /logout
 
 admin_logout:
     path: /admin/cpanel/logout
@@ -100,10 +105,6 @@ delete_keyword:
     path: /admin/cpanel/deletekeyword
     defaults: { _controller: StoreBundle:Admin:deleteKeyword }
 
-category:
-    path: /{title}
-    defaults: { _controller: StoreBundle:Category:category }
-
 render_category:
-    path: /service/renderCaregory
+    path: /admin/service/renderCaregory
     defaults: { _controller: StoreBundle:Category:renderCategoryList }

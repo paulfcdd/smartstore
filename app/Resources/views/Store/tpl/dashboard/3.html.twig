@@ -1,0 +1,292 @@
+<div class="langTpl">
+    <div class="alert alert-success single-row-edit">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong> Data was changed successfully.
+    </div>
+    <table class="table table-bordered table-striped translation-tbl">
+        <thead>
+        <tr>
+            <th>Keyword</th>
+            <th>Translation</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for translation in translations %}
+            <tr>
+                <td>
+            <textarea class="form-control keywords keywordVal-{{ translation.keywordId }}" id="{{ translation.keywordId }}" rows="2"
+                      style="width: 100%">{{ translation.keywordVal }}</textarea>
+
+                </td>
+                <td>
+            <textarea class="form-control translations translation-{{ translation.keywordId }}" rows="2"
+                      style="width: 100%">{{ translation.translation }}</textarea>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#removeKeywordConf" id="{{ translation.keywordId }}" onclick="removeConf(this)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-success" id="{{ translation.keywordId }}" onclick="singleRowSave(this)">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                </td>
+            </tr>
+
+            <!-- Modal -->
+            <div id="removeKeywordConf" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Remove keyword confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Are you sure you want to delete selected element? Removing of this element
+                                can cause system errors and lead to faulty operation of the system
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" id="{{ translation.keywordId }}" onclick="deleteKeyWord(this)">
+                                Delete
+                            </button>
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td class="text-center">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewKeyword">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="addNewKeyword" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        Add new keyword
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-responsive">
+                        <thead>
+                        <tr>
+                            <th>Keyword</th>
+                            <th>Translation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td rowspan="3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="newKewordVal">
+                                </div>
+                            </td>
+                            <td>
+                                {% for lang in langs %}
+                                    <div class="form-group translations">
+                                        <input type="text" class="form-control" id="{{ lang.langCode }}"
+                                               placeholder="{{ lang.langName }}">
+                                    </div>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick="saveKeyword(this)">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Save
+                    </button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span>&nbsp;Discard
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        window.lang = 'en';
+
+        $(".single-row-edit").attr('hidden', true);
+
+        function removeConf(btn) {
+            window.id = btn.id;
+        }
+
+        function deleteKeyWord () {
+
+            var removeId = window.id;
+
+            $.ajax({
+                url: '{{ path('delete_keyword') }}',
+                metho: 'POST',
+                data: {
+                    removeId
+                },
+                success: function (data) {
+                    location.reload();
+                }
+            })
+        }
+
+        function switchLang(btn) {
+
+            var pageId = '3';
+            var langCode = btn.id;
+
+            $.ajax({
+                url: '{{ path('get_transl_by_page') }}',
+                method: 'POST',
+                data: {
+                    'pageId': pageId,
+                    'langCode': langCode
+                },
+                success: function (data) {
+                    var route = "{{ path('show_translations', {'id': "ID"}) }}";
+                    var routeId = route.replace('ID', pageId);
+                    $("#loadTbl").load(routeId, {'data': data});
+                }
+            });
+
+            window.lang = btn.id;
+        }
+
+
+        function saveAll() {
+            $('.translation-tbl tr:has(td)').each(function () {
+
+                var cell1 = $(this).find('.keywords');
+
+                var cell2 = $(this).find('.translations');
+
+                if (!cell1.val() && !cell2.val()) {
+                    return;
+                }
+
+                var keywordId = cell1.attr('id');
+
+                var pageId = '3';
+
+                var sysLang =  window.lang;
+
+                var myObj = new Object();
+
+                myObj.keyword = cell1.val();
+
+                myObj.translation = cell2.val();
+
+                myObj.pageId = pageId;
+
+                myObj.lang = sysLang;
+
+                myObj.kwId = keywordId;
+
+                var myJson = JSON.stringify(myObj);
+
+                $.ajax({
+                    url: "{{ path('save_all') }}",
+                    method: "POST",
+                    data: {
+                        myJson
+                    },
+                    success: function (data) {
+                        console.log(data)
+                    }
+                });
+            });
+        }
+
+        function singleRowSave(btn) {
+            var sysLang =  window.lang;
+
+            var id = btn.id;
+
+            var kVal = $(".keywordVal-" + id).val();
+
+            var kTrans = $(".translation-" + id).val();
+
+            var pageId = '3';
+
+            $.ajax({
+                url: '{{ path('single_row_update') }}',
+                method: 'POST',
+                data: {
+                    id,
+                    kVal,
+                    kTrans,
+                    pageId,
+                    sysLang
+                },
+                success: function (data) {
+                    if (data === '1') {
+                        $(".single-row-edit").attr('hidden', false);
+                    }
+                }
+            });
+
+        }
+
+        function saveKeyword() {
+            var kVal = $("#newKewordVal").val();
+            var pageId = 3;
+            $.ajax({
+                url: '{{ path('add_keyword') }}',
+                method: 'POST',
+                data: {
+                    kVal,
+                    pageId
+                },
+                success: function (data) {
+                    $('.translations :input').each(function () {
+
+                        var langCode = $(this).attr('id');
+
+                        var translation = $(this).val();
+
+                        var transArr = {
+                            [langCode]: translation
+                        };
+
+                        $.ajax({
+                            url: '{{ path('add_translate') }}',
+                            method: 'POST',
+                            data: {
+                                transArr
+                            },
+                            success: function (data) {
+                                location.reload();
+                            }
+                        });
+                    });
+                }
+            });
+
+        }
+
+
+        $('.dropdown-menu').find('#' + btn.id).addClass("default-lang");
+    </script>
+    <script src="{{ asset('js/dropdowns.js') }}"></script>
+</div>

@@ -7,7 +7,6 @@
         <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
     {% block styles %}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
@@ -58,6 +57,7 @@
         $('.dropdown-menu').find('#' + curLang).addClass("default-lang");
     </script>
     <script src="{{ asset('js/dropdowns.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 {% endblock %}
 </body>
 </html>

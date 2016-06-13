@@ -13,3 +13,18 @@ ON c.c_id = ct.c_id
 INNER JOIN lang l
 ON l.lang_code = ct.lang_code
 WHERE l.lang_code = 'en'
+
+
+SELECT c.c_keyword, s.c_keyword
+FROM categories c, subcategories s
+WHERE c.c_id = s.parent_id
+
+SELECT c.c_keyword, ct.translation, s.c_keyword
+FROM categories c
+INNER JOIN c_translations ct
+ON c.c_id = ct.c_id
+INNER JOIN subcategories s
+ON c.c_id = s.parent_id
+INNER JOIN lang l
+ON l.lang_code = ct.lang_code
+WHERE l.lang_code = 'en'

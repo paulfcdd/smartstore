@@ -1,38 +1,22 @@
-<div class="categoriesTpl container-fluid">
+<div class="container-fluid" id="categoriesTpl">
     <div class="row top-row">
         <h3> {{ title }}</h3>
     </div>
     <div class="row control-row">
         <div class="col-lg-10 col-md-10 col-sm-10 hidden-xs"></div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 buttons">
-            {#<div class="btn-group pull-right">#}
-            {#<div class="btn-group dropdown">#}
-            {#<button type="button" class="btn btn-primary dropdown-toggle dropdown-btn" data-toggle="dropdown">#}
-            {#<span class="caret"></span></button>#}
-            {#<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">#}
-            {#{% for lang in langs %}#}
-            {#<li id="{{ lang.langCode }}"#}
-            {#onclick="switchLang(this)">#}
-            {#<a href="#language"#}
-            {#id="{{ lang.langCode }}">#}
-            {#{{ lang.langName }}#}
-            {#</a>#}
-            {#</li>#}
-            {#{% endfor %}#}
-            {#</ul>#}
-            {#</div>#}
-            {#</div>#}
         </div>
     </div>
 
     <div class="row translation-block" id="loadTbl">
 
-        <table class="table table-hover">
+        <table class="table table-bordered table-striped category-tbl">
             <thead>
             <tr>
                 <th>Category</th>
                 <th>Edit</th>
                 <th>Delete</th>
+                <th>Subcategories</th>
             </tr>
             </thead>
             <tbody>
@@ -49,6 +33,7 @@
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </td>
+                    <td></td>
                 </tr>
             {% endfor %}
             </tbody>

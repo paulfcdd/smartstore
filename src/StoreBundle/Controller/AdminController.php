@@ -24,7 +24,7 @@ class AdminController extends Controller
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
-        return $this->render('Store/Admin/dashboard.html.twig', array(
+        return $this->render('Store/tpl/dashboard.html.twig', array(
             'name' => $user->getUsername(),
             'test' => 'This is admin console',
             'js_disabled' => 'JavaScript is disabled. Please, enable JavaScript on your browser for correct work with system'
@@ -38,7 +38,7 @@ class AdminController extends Controller
 
         $currencies = $currencyRepo->findAll();
 
-        return $this->render('Store/Admin/currency/currency.html.twig', array(
+        return $this->render('Store/tpl/dashboard/currency.html.twig', array(
             'title' => 'Currencies',
             'currencies' => $currencies
         ));
@@ -46,7 +46,7 @@ class AdminController extends Controller
 
     public function editCurrencyAction()
     {
-        return $this->render('Store/Admin/currency/editCurrency.html.twig', array(
+        return $this->render('Store/tpl/dashboard/editCurrency.html.twig', array(
             'title' => 'Edit currency',
             'name' => 'test'
         ));
@@ -134,7 +134,7 @@ class AdminController extends Controller
 
         $langs = $langRepo->findAll();
 
-        return $this->render('Store/Admin/lang/lang.html.twig', array(
+        return $this->render('Store/tpl/dashboard/lang.html.twig', array(
             'title' => 'Translations',
             'pages' => $pages,
             'langs' => $langs
@@ -177,7 +177,7 @@ class AdminController extends Controller
 
         $langs = $langRepo->findAll();
 
-        return $this->render('Store/Admin/lang/' . $id . '.html.twig', array(
+        return $this->render('Store/tpl/dashboard/' . $id . '.html.twig', array(
             'langs' => $langs,
             "translations" => $data
         ));
@@ -382,7 +382,7 @@ class AdminController extends Controller
     public function settingsLocaleAction ()
     {
 
-        return $this->render('Store/Admin/locale/locale.html.twig', array(
+        return $this->render('Store/tpl/dashboard/locale.html.twig', array(
             'title' => 'Locale'
         ));
     }
@@ -399,7 +399,7 @@ class AdminController extends Controller
 
         $translationsRepo = $this->getDoctrine()->getRepository('StoreBundle:CTranslations');
 
-        return $this->render('Store/Admin/categories/categories.html.twig', array(
+        return $this->render('Store/tpl/dashboard/categories.html.twig', array(
             'title' => 'Categories',
             'categories' => $categoryList,
             'langs' => $langs

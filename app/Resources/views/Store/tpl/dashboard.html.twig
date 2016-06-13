@@ -14,6 +14,7 @@
     <!-- Custom CSS -->
     {#<link href="{{ asset('css/admin/cpanel.css') }}" rel="stylesheet">#}
     <link href="{{ asset('css/admin/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin/tpl.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext,cyrillic,latin-ext,greek'
@@ -113,7 +114,7 @@
     </div>
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid" id="load">
 
         </div>
     </div>
@@ -131,10 +132,9 @@
 <script>
 
     function loadTemplate(tpl) {
-        console.log(tpl.id);
-        id = tpl.id;
-        window.location.hash = id;
-        $('#load').load("{{ path('currency') }}", function (response, status, xhr) {
+        var tplName = tpl.id;
+        window.location.hash = tplName;
+        $('#load').load("/smartstore/web/app_dev.php/admin/cpanel/"+tplName, function (response, status, xhr) {
             if (status == 'error') {
                 $('#load').text('During loading template execution error occurred. Error code : ' + xhr.status + ' (' + xhr.statusText + ') ');
             }

@@ -1,0 +1,60 @@
+#currencyTpl #wrapper,
+#langTpl #wrapper,
+#categoriesTpl #wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+#currencyTpl #wrapper .divider,
+#langTpl #wrapper .divider,
+#categoriesTpl #wrapper .divider {
+  background-color: whitesmoke;
+}
+#currencyTpl #wrapper.toggled,
+#langTpl #wrapper.toggled,
+#categoriesTpl #wrapper.toggled {
+  padding-left: 250px;
+}
+#currencyTpl .currency-tbl thead tr td,
+#langTpl .currency-tbl thead tr td,
+#categoriesTpl .currency-tbl thead tr td {
+  text-transform: capitalize;
+  font-weight: bold;
+  width: 20%;
+}
+#currencyTpl .lang-row .col-lg-1,
+#langTpl .lang-row .col-lg-1,
+#categoriesTpl .lang-row .col-lg-1 {
+  padding: 0 10px 0 0;
+  display: inline-block;
+  width: inherit;
+}
+#currencyTpl .lang-row .col-lg-1 button:first-letter,
+#langTpl .lang-row .col-lg-1 button:first-letter,
+#categoriesTpl .lang-row .col-lg-1 button:first-letter {
+  text-transform: capitalize;
+}
+#currencyTpl .control-row,
+#langTpl .control-row,
+#categoriesTpl .control-row {
+  margin-bottom: 10px;
+}
+#currencyTpl .control-row .dropdown-menu,
+#langTpl .control-row .dropdown-menu,
+#categoriesTpl .control-row .dropdown-menu {
+  margin-left: -75px;
+}
+#currencyTpl .control-row .buttons,
+#langTpl .control-row .buttons,
+#categoriesTpl .control-row .buttons {
+  padding: 0 !important;
+}
+#currencyTpl .category-tbl thead tr td,
+#langTpl .category-tbl thead tr td,
+#categoriesTpl .category-tbl thead tr td {
+  text-transform: capitalize;
+  font-weight: bold;
+  width: 25%;
+}

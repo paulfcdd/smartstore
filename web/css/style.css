@@ -205,6 +205,10 @@ body {
 .wrapper .header .header-mid .contact-button:hover {
   text-decoration: underline;
 }
+.wrapper .header .header-bot .dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
 .wrapper .header .header-bot #topMenu ul li:hover {
   background-color: #328bb6;
 }

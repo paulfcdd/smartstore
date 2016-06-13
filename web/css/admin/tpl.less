@@ -1,0 +1,68 @@
+#currencyTpl, #langTpl, #categoriesTpl {
+
+  #wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+    .divider {
+      background-color: whitesmoke;
+    }
+
+    &.toggled {
+      padding-left: 250px;
+    }
+  }
+
+  .currency-tbl {
+    thead {
+      tr td {
+        text-transform: capitalize;
+        font-weight: bold;
+        width: 20%;
+      }
+    }
+  }
+
+
+  .lang-row {
+
+    .col-lg-1 {
+      padding: 0 10px 0 0;
+      display: inline-block;
+      width: inherit;
+
+      button {
+        &:first-letter {
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+
+  .control-row {
+    margin-bottom: 10px;
+
+    .dropdown-menu {
+      margin-left: -75px
+    }
+
+    .buttons {
+      padding: 0 !important;
+    }
+  }
+
+  .category-tbl {
+    thead {
+      tr td {
+        text-transform: capitalize;
+        font-weight: bold;
+        width: 25%;
+      }
+    }
+  }
+
+
+}
